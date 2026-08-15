@@ -1,4 +1,5 @@
-const CACHE = 'tabi-log-v2';
+const CACHE = 'tabi-log-v3
+  ';
 
 const ASSETS = ['./', './index.html', './manifest.webmanifest'];
 
