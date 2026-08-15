@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0877c9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="旅ログ">
+<link rel="manifest" href="manifest.webmanifest">
+<title>🏕️ 旅ログ</title>
+<style>
+:root{--blue:#0877c9;--light:#eef8ff;--ink:#17324d;--muted:#6d8193}
+*{box-sizing:border-box}body{margin:0;background:#f6fbff;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif}
+header{background:linear-gradient(135deg,#0877c9,#25a5ef);color:#fff;padding:28px 18px 20px;border-radius:0 0 24px 24px;box-shadow:0 5px 18px #0877c933}
+h1{margin:0;font-size:30px}.sub{opacity:.9;margin-top:5px}.wrap{max-width:720px;margin:auto;padding-bottom:92px}
+.card{background:#fff;border-radius:18px;padding:16px;margin:14px 14px;box-shadow:0 3px 15px #0877c91a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:14px;padding:13px;background:var(--light);color:#075c99;font-weight:700;font-size:15px}.primary{background:var(--blue);color:white}
+input,textarea{width:100%;border:1px solid #d5e6f2;border-radius:12px;padding:12px;margin:5px 0 9px;font-size:16px;background:#fbfdff}textarea{min-height:80px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.small{font-size:13px;color:var(--muted)}.pill{display:inline-block;background:#e7f5ff;color:#08649e;border-radius:20px;padding:6px 10px;margin:3px;font-size:13px}
+progress{width:100%;height:12px;accent-color:var(--blue)}ul{padding:0;margin:0;list-style:none}li{padding:10px 0;border-bottom:1px solid #edf2f6}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #dceaf3;display:flex;justify-content:space-around;padding:8px env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom)) env(safe-area-inset-left);z-index:5}
+nav button{background:none;border:0;color:#698195;font-size:12px;padding:4px 9px}nav button.active{color:var(--blue);font-weight:800}
+.page{display:none}.page.active{display:block}.hero{font-size:20px;font-weight:800}.danger{color:#c33}.result{padding:12px 0;border-bottom:1px solid #e6eff5}.result b{display:block}.tag{font-size:12px;color:#0877c9}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>🏕️ 旅ログ</h1><div class="sub">旅の前から、旅の後まで。</div></header>
+
+<section id="home" class="page active">
+<div class="card"><div class="hero" id="tripTitle">次の旅を計画しましょう</div><div id="tripInfo" class="small">旅行を登録するとここに表示されます。</div><br><progress id="progress" value="0" max="100"></progress><div class="small" id="progressText">準備 0%</div></div>
+<div class="card"><div class="hero">✨ 旅先コンシェルジュ</div><div class="grid" style="margin-top:10px">
+<button class="btn" onclick="quickSearch('食事')">🍴 食事</button><button class="btn" onclick="quickSearch('日帰り温泉')">♨️ 温泉</button>
+<button class="btn" onclick="quickSearch('観光')">📸 観光</button><button class="btn" onclick="quickSearch('アクティビティ')">🛶 遊ぶ</button>
+</div></div>
+<div class="card"><div class="hero">🌦️ 天気</div><div id="weather">現在地を取得して確認できます。</div><button class="btn primary" onclick="weather()">天気を取得</button></div>
+</section>
+
+<section id="trip" class="page">
+<div class="card"><div class="hero">🗓️ 旅行</div>
+<input id="name" placeholder="旅行タイトル"><input id="dest" placeholder="行き先（例：河口湖）">
+<label class="small">開始日</label><input id="start" type="date"><label class="small">終了日</label><input id="end" type="date">
+<input id="lodging" placeholder="宿泊先"><input id="nap" placeholder="なっぷのURL">
+<textarea id="memo" placeholder="旅のメモ"></textarea><button class="btn primary" onclick="saveTrip()">保存</button></div>
+<div class="card"><div class="hero">🗺️ 旅程</div><div id="schedule"></div><button class="btn" onclick="addSchedule()">＋ 予定を追加</button></div>
+</section>
+
+<section id="packing" class="page">
+<div class="card"><div class="hero">🧳 持ち物</div><progress id="packProgress" value="0" max="100"></progress><div id="packText" class="small"></div><br>
+<button class="btn primary" onclick="campSet()">🏕️ キャンプ基本セットを追加</button></div>
+<div class="card"><ul id="packList"></ul></div>
+</section>
+
+<section id="discover" class="page">
+<div class="card"><div class="hero">🔎 旅先を探す</div><input id="search" placeholder="蕎麦、温泉、カヤックなど"><div><span class="pill" onclick="setSearch('食事')">食事</span><span class="pill" onclick="setSearch('温泉')">温泉</span><span class="pill" onclick="setSearch('観光')">観光</span><span class="pill" onclick="setSearch('アクティビティ')">アクティビティ</span><span class="pill" onclick="setSearch('カフェ')">カフェ</span><span class="pill" onclick="setSearch('道の駅')">道の駅</span></div><br><button class="btn primary" onclick="searchPlaces()">🔎 検索</button></div>
+<div class="card" id="results"></div>
+<div class="card"><div class="hero">⭐ 行きたい</div><div id="saved"></div></div>
+</section>
+
+<section id="memory" class="page">
+<div class="card"><div class="hero">📸 思い出</div><input id="media" type="file" accept="image/*,video/*" multiple><p class="small">選択した写真・動画はこの端末のブラウザ内に記録します。</p></div>
+<div class="card"><div class="hero">📍 訪問記録</div><button class="btn primary" onclick="visit()">現在地を記録</button><div id="visits"></div></div>
+<div class="card"><div class="hero">🎬 ショート動画</div><p class="small">Web版では写真を選択して簡易スライドショー素材として整理できます。高度なMP4自動編集はネイティブ版での拡張項目です。</p><button class="btn" onclick="alert('写真を選択してから、旅行アルバムとして整理できます。')">🎬 旅動画を準備</button></div>
+</section>
+</div>
+
+<nav>
+<button class="active" onclick="show('home',this)">🏠<br>ホーム</button><button onclick="show('trip',this)">🗓️<br>旅行</button><button onclick="show('packing',this)">🧳<br>荷物</button><button onclick="show('discover',this)">🔎<br>発見</button><button onclick="show('memory',this)">📸<br>思い出</button>
+</nav>
+
+<script>
+const K='tabiLogFinal';let db=JSON.parse(localStorage.getItem(K)||'{"trip":{},"pack":[],"saved":[],"schedule":[],"visits":[]}');
+const save=()=>localStorage.setItem(K,JSON.stringify(db));
+function show(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}
+function render(){
+const t=db.trip||{};document.getElementById('tripTitle').textContent=t.name||'次の旅を計画しましょう';document.getElementById('tripInfo').textContent=t.destination?`${t.destination}　${t.start||''} ～ ${t.end||''}`:'旅行を登録するとここに表示されます。';
+document.getElementById('name').value=t.name||'';document.getElementById('dest').value=t.destination||'';document.getElementById('start').value=t.start||'';document.getElementById('end').value=t.end||'';document.getElementById('lodging').value=t.lodging||'';document.getElementById('nap').value=t.nap||'';document.getElementById('memo').value=t.memo||'';
+let done=db.pack.filter(x=>x.done).length,p=db.pack.length?Math.round(done/db.pack.length*100):0;document.getElementById('progress').value=p;document.getElementById('progressText').textContent=`準備 ${p}%`;document.getElementById('packProgress').value=p;document.getElementById('packText').textContent=`${done} / ${db.pack.length} 完了`;
+document.getElementById('packList').innerHTML=db.pack.map((x,i)=>`<li><label><input style="width:auto;margin-right:10px" type="checkbox" ${x.done?'checked':''} onchange="togglePack(${i})">${x.name}</label></li>`).join('');
+document.getElementById('schedule').innerHTML=db.schedule.map((x,i)=>`<div class="result"><b>${x.title}</b><span class="small">${x.date||''} ${x.place||''}</span></div>`).join('')||'<span class="small">まだ予定がありません。</span>';
+document.getElementById('saved').innerHTML=db.saved.map((x,i)=>`<div class="result"><b>${x.name}</b><span class="tag">${x.category}</span><br><button class="btn" onclick="addSaved(${i})">＋旅程へ</button></div>`).join('')||'<span class="small">まだありません。</span>';
+document.getElementById('visits').innerHTML=db.visits.map(x=>`<div class="result"><b>${x.name}</b><span class="small">${x.time}</span></div>`).join('');
+}
+function saveTrip(){db.trip={name:name.value,destination:dest.value,start:start.value,end:end.value,lodging:lodging.value,nap:nap.value,memo:memo.value};save();render();alert('保存しました');}
+function campSet(){['テント','寝袋','マット','ランタン','焚き火用品','チェア','クーラーボックス','着替え','タオル','雨具','虫よけ','充電器','モバイルバッテリー'].forEach(n=>{if(!db.pack.some(x=>x.name===n))db.pack.push({name:n,done:false})});save();render()}
+function togglePack(i){db.pack[i].done=!db.pack[i].done;save();render()}
+function addSchedule(){let title=prompt('予定名');if(!title)return;let date=prompt('日時（例：8/15 12:00）')||'';let place=prompt('場所')||'';db.schedule.push({title,date,place});save();render()}
+function addSaved(i){let x=db.saved[i];db.schedule.push({title:x.name,date:'',place:x.name});save();render();alert('旅程に追加しました')}
+function setSearch(x){document.getElementById('search').value=x}
+function quickSearch(x){document.getElementById('search').value=x;show('discover',document.querySelectorAll('nav button')[3]);searchPlaces()}
+function searchPlaces(){let q=document.getElementById('search').value||'観光';let d=db.trip.destination||'';let url='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' '+d);document.getElementById('results').innerHTML=`<div class="hero">📍 ${q}</div><p class="small">「${d||'旅先'}」周辺を地図で検索します。</p><a class="btn primary" style="display:inline-block;text-decoration:none" target="_blank" href="${url}">地図で見る</a>`}
+function visit(){if(!navigator.geolocation){alert('位置情報に対応していません');return}navigator.geolocation.getCurrentPosition(p=>{db.visits.unshift({name:db.trip.destination||'現在地',time:new Date().toLocaleString('ja-JP'),lat:p.coords.latitude,lon:p.coords.longitude});save();render()},()=>alert('位置情報を許可してください'))}
+async function weather(){if(!navigator.geolocation){alert('位置情報に対応していません');return}navigator.geolocation.getCurrentPosition(async p=>{try{let u=`https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,weather_code&timezone=auto`;let j=await (await fetch(u)).json();document.getElementById('weather').textContent=`現在 ${j.current.temperature_2m}℃　天気コード ${j.current.weather_code}` }catch(e){document.getElementById('weather').textContent='天気を取得できませんでした'}},()=>alert('位置情報を許可してください'))}
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
+render();
+</script>
+</body></html>
