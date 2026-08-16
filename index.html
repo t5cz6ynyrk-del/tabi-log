@@ -16,7 +16,7 @@
 
 <link rel="manifest" href="manifest.webmanifest">
 
-<title>🏕️ 旅ログ v2.2</title>
+<title>🏕️ 旅ログ v2.3</title>
 
 <style>
 
@@ -32,7 +32,7 @@
 
   --muted:#6d8193;
 
-  --danger:#c33;
+  --danger:#c33
 
 }
 
@@ -46,17 +46,9 @@ body{
 
   color:var(--ink);
 
-  font-family:
+  font-family:"Hiragino Maru Gothic ProN","Hiragino Maru Gothic Pro",
 
-    "Hiragino Maru Gothic ProN",
-
-    "Hiragino Maru Gothic Pro",
-
-    "Yu Gothic",
-
-    "Meiryo",
-
-    sans-serif;
+  "Yu Gothic","Meiryo",sans-serif
 
 }
 
@@ -70,7 +62,7 @@ header{
 
   border-radius:0 0 24px 24px;
 
-  box-shadow:0 5px 18px #0877c933;
+  box-shadow:0 5px 18px #0877c933
 
 }
 
@@ -80,9 +72,7 @@ h1{
 
   font-size:30px;
 
-  font-weight:900;
-
-  letter-spacing:.03em;
+  font-weight:900
 
 }
 
@@ -90,7 +80,7 @@ h1{
 
   opacity:.95;
 
-  margin-top:5px;
+  margin-top:5px
 
 }
 
@@ -100,7 +90,7 @@ h1{
 
   margin:auto;
 
-  padding-bottom:92px;
+  padding-bottom:92px
 
 }
 
@@ -114,7 +104,7 @@ h1{
 
   margin:14px;
 
-  box-shadow:0 3px 15px #0877c91a;
+  box-shadow:0 3px 15px #0877c91a
 
 }
 
@@ -124,7 +114,7 @@ h1{
 
   grid-template-columns:1fr 1fr;
 
-  gap:10px;
+  gap:10px
 
 }
 
@@ -144,7 +134,7 @@ h1{
 
   font-size:15px;
 
-  font-family:inherit;
+  font-family:inherit
 
 }
 
@@ -152,7 +142,7 @@ h1{
 
   background:var(--blue);
 
-  color:#fff;
+  color:#fff
 
 }
 
@@ -160,7 +150,7 @@ h1{
 
   background:#fff0f0;
 
-  color:var(--danger);
+  color:var(--danger)
 
 }
 
@@ -180,13 +170,13 @@ input,textarea,select{
 
   background:#fbfdff;
 
-  font-family:inherit;
+  font-family:inherit
 
 }
 
 textarea{
 
-  min-height:80px;
+  min-height:80px
 
 }
 
@@ -198,7 +188,7 @@ textarea{
 
   gap:10px;
 
-  align-items:center;
+  align-items:center
 
 }
 
@@ -206,7 +196,7 @@ textarea{
 
   font-size:13px;
 
-  color:var(--muted);
+  color:var(--muted)
 
 }
 
@@ -220,11 +210,21 @@ textarea{
 
   border-radius:20px;
 
-  padding:6px 10px;
+  padding:7px 11px;
 
   margin:3px;
 
   font-size:13px;
+
+  cursor:pointer
+
+}
+
+.pill.selected{
+
+  background:var(--blue);
+
+  color:#fff
 
 }
 
@@ -234,7 +234,7 @@ progress{
 
   height:12px;
 
-  accent-color:var(--blue);
+  accent-color:var(--blue)
 
 }
 
@@ -244,7 +244,7 @@ ul{
 
   margin:0;
 
-  list-style:none;
+  list-style:none
 
 }
 
@@ -252,7 +252,7 @@ li{
 
   padding:10px 0;
 
-  border-bottom:1px solid #edf2f6;
+  border-bottom:1px solid #edf2f6
 
 }
 
@@ -274,11 +274,9 @@ nav{
 
   justify-content:space-around;
 
-  padding:8px;
+  padding:8px 5px calc(8px + env(safe-area-inset-bottom));
 
-  padding-bottom:calc(8px + env(safe-area-inset-bottom));
-
-  z-index:5;
+  z-index:5
 
 }
 
@@ -294,7 +292,7 @@ nav button{
 
   padding:4px 9px;
 
-  font-family:inherit;
+  font-family:inherit
 
 }
 
@@ -302,19 +300,55 @@ nav button.active{
 
   color:var(--blue);
 
-  font-weight:900;
+  font-weight:900
 
 }
 
-.page{display:none}
+/* 画面切り替えフェード */
 
-.page.active{display:block}
+.page{
+
+  display:none;
+
+  opacity:0;
+
+  transform:translateY(5px)
+
+}
+
+.page.active{
+
+  display:block;
+
+  animation:pageFade .28s ease forwards
+
+}
+
+@keyframes pageFade{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(5px)
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0)
+
+  }
+
+}
 
 .hero{
 
   font-size:20px;
 
-  font-weight:900;
+  font-weight:900
 
 }
 
@@ -322,19 +356,19 @@ nav button.active{
 
   padding:12px 0;
 
-  border-bottom:1px solid #e6eff5;
+  border-bottom:1px solid #e6eff5
 
 }
 
 .result b{
 
-  display:block;
+  display:block
 
 }
 
 .home-choice{
 
-  padding:20px 14px;
+  padding:20px 14px
 
 }
 
@@ -342,7 +376,7 @@ nav button.active{
 
   min-height:110px;
 
-  font-size:18px;
+  font-size:18px
 
 }
 
@@ -356,7 +390,7 @@ nav button.active{
 
   color:var(--muted);
 
-  font-weight:500;
+  font-weight:500
 
 }
 
@@ -366,7 +400,7 @@ nav button.active{
 
   align-items:center;
 
-  gap:10px;
+  gap:10px
 
 }
 
@@ -374,13 +408,13 @@ nav button.active{
 
   width:auto;
 
-  margin:0;
+  margin:0
 
 }
 
 .pack-name{
 
-  flex:1;
+  flex:1
 
 }
 
@@ -388,7 +422,7 @@ nav button.active{
 
   font-size:12px;
 
-  color:#0877c9;
+  color:#0877c9
 
 }
 
@@ -398,7 +432,7 @@ nav button.active{
 
   padding:20px;
 
-  color:var(--muted);
+  color:var(--muted)
 
 }
 
@@ -410,7 +444,7 @@ nav button.active{
 
   gap:10px;
 
-  margin-top:10px;
+  margin-top:10px
 
 }
 
@@ -424,7 +458,7 @@ nav button.active{
 
   padding:8px;
 
-  overflow:hidden;
+  overflow:hidden
 
 }
 
@@ -440,7 +474,7 @@ nav button.active{
 
   border-radius:10px;
 
-  background:#000;
+  background:#000
 
 }
 
@@ -456,7 +490,17 @@ nav button.active{
 
   text-overflow:ellipsis;
 
-  margin-top:5px;
+  margin-top:5px
+
+}
+
+.media-comment{
+
+  min-height:58px;
+
+  font-size:14px;
+
+  margin:7px 0 0
 
 }
 
@@ -464,7 +508,29 @@ nav button.active{
 
   background:linear-gradient(135deg,#eef8ff,#f8f0ff);
 
-  border:1px solid #d9e8f7;
+  border:1px solid #d9e8f7
+
+}
+
+.search-actions{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+  margin-top:10px
+
+}
+
+.search-link{
+
+  display:block;
+
+  text-decoration:none;
+
+  text-align:center
 
 }
 
@@ -484,13 +550,39 @@ nav button.active{
 
   justify-content:center;
 
-  flex-direction:column;
+  flex-direction:column
 
 }
 
 #slideshow.active{
 
+  display:flex
+
+}
+
+#slideContainer{
+
+  width:100%;
+
   display:flex;
+
+  align-items:center;
+
+  justify-content:center
+
+}
+
+#slideContainer.fade-in{
+
+  animation:mediaFade .55s ease
+
+}
+
+@keyframes mediaFade{
+
+  from{opacity:0}
+
+  to{opacity:1}
 
 }
 
@@ -498,7 +590,7 @@ nav button.active{
 
   max-width:100%;
 
-  max-height:78vh;
+  max-height:72vh
 
 }
 
@@ -510,9 +602,23 @@ nav button.active{
 
   font-weight:800;
 
-  padding:16px;
+  padding:12px 16px 5px;
+
+  text-align:center
+
+}
+
+#slideComment{
+
+  color:#fff;
+
+  font-size:16px;
+
+  padding:4px 20px 16px;
 
   text-align:center;
+
+  min-height:26px
 
 }
 
@@ -534,6 +640,28 @@ nav button.active{
 
   padding:10px 14px;
 
+  z-index:2
+
+}
+
+.bgm-row{
+
+  display:flex;
+
+  gap:10px;
+
+  align-items:center
+
+}
+
+@media(max-width:420px){
+
+  .search-actions{
+
+    grid-template-columns:1fr
+
+  }
+
 }
 
 </style>
@@ -548,7 +676,7 @@ nav button.active{
 
   <h1>🏕️ 旅ログ</h1>
 
-  <div class="sub">旅の前から、旅の後まで。 v2.2</div>
+  <div class="sub">旅の前から、旅の後まで。 v2.3</div>
 
 </header>
 
@@ -584,17 +712,17 @@ nav button.active{
 
     <div class="hero">✨ 旅先コンシェルジュ</div>
 
-    <div class="grid" style="margin-top:10px">
+    <p class="small">
 
-      <button class="btn" data-quick="食事">🍴 食事</button>
+      旅先周辺の温泉・食事・観光・アクティビティなどを検索します。
 
-      <button class="btn" data-quick="日帰り温泉">♨️ 温泉</button>
+    </p>
 
-      <button class="btn" data-quick="観光">📸 観光</button>
+    <button class="btn primary" id="openConciergeBtn">
 
-      <button class="btn" data-quick="アクティビティ">🛶 遊ぶ</button>
+      🔎 コンシェルジュ検索
 
-    </div>
+    </button>
 
   </div>
 
@@ -602,9 +730,17 @@ nav button.active{
 
     <div class="hero">🌦️ 天気</div>
 
-    <div id="weatherBox">現在地を取得して確認できます。</div>
+    <div id="weatherBox">
 
-    <button class="btn primary" id="weatherBtn">天気を取得</button>
+      現在地を取得して確認できます。
+
+    </div>
+
+    <button class="btn primary" id="weatherBtn">
+
+      天気を取得
+
+    </button>
 
   </div>
 
@@ -616,9 +752,13 @@ nav button.active{
 
     <div class="hero">🗓️ 旅行</div>
 
-    <input id="name" placeholder="旅行タイトル">
+    <input id="name"
 
-    <input id="dest" placeholder="行き先（例：河口湖）">
+      placeholder="旅行タイトル">
+
+    <input id="dest"
+
+      placeholder="行き先（例：河口湖、榛名湖キャンプ場）">
 
     <label class="small">開始日</label>
 
@@ -628,17 +768,27 @@ nav button.active{
 
     <input id="end" type="date">
 
-    <input id="lodging" placeholder="宿泊先">
+    <input id="lodging"
 
-    <input id="nap" placeholder="なっぷ等の予約URL">
+      placeholder="宿泊先">
 
-    <textarea id="memo" placeholder="旅のメモ"></textarea>
+    <textarea id="memo"
+
+      placeholder="旅のメモ"></textarea>
 
     <div class="grid">
 
-      <button class="btn" id="goHomeBtn">戻る</button>
+      <button class="btn" id="goHomeBtn">
 
-      <button class="btn primary" id="saveTripBtn">保存</button>
+        戻る
+
+      </button>
+
+      <button class="btn primary" id="saveTripBtn">
+
+        保存
+
+      </button>
 
     </div>
 
@@ -650,7 +800,11 @@ nav button.active{
 
     <div id="schedule"></div>
 
-    <button class="btn" id="addScheduleBtn">＋ 予定を追加</button>
+    <button class="btn" id="addScheduleBtn">
+
+      ＋ 予定を追加
+
+    </button>
 
   </div>
 
@@ -682,15 +836,11 @@ nav button.active{
 
     <div class="row" style="margin-top:10px">
 
-      <input
-
-        id="packNew"
+      <input id="packNew"
 
         placeholder="例：カメラ"
 
-        style="margin:0"
-
-      >
+        style="margin:0">
 
       <button class="btn primary" id="addPackBtn">
 
@@ -700,37 +850,35 @@ nav button.active{
 
     </div>
 
-    <div class="row">
+    <select id="packCategory">
 
-      <select id="packCategory" style="margin:5px 0">
+      <option>基本</option>
 
-        <option>基本</option>
+      <option>衣類</option>
 
-        <option>衣類</option>
+      <option>キャンプ</option>
 
-        <option>キャンプ</option>
+      <option>電子機器</option>
 
-        <option>電子機器</option>
+      <option>洗面・衛生</option>
 
-        <option>洗面・衛生</option>
+      <option>その他</option>
 
-        <option>その他</option>
+    </select>
 
-      </select>
-
-    </div>
-
-    <progress
-
-      id="packProgress"
+    <progress id="packProgress"
 
       value="0"
 
-      max="100"
+      max="100">
 
-    ></progress>
+    </progress>
 
-    <div id="packText" class="small"></div>
+    <div id="packText"
+
+      class="small">
+
+    </div>
 
     <br>
 
@@ -764,47 +912,113 @@ nav button.active{
 
   <div class="card">
 
-    <div class="hero">🔎 旅先を探す</div>
+    <div class="hero">
 
-    <input
+      ✨ 旅先コンシェルジュ
 
-      id="search"
+    </div>
 
-      placeholder="蕎麦、温泉、カヤックなど"
+    <label class="small">
 
-    >
+      検索する場所
 
-    <div>
+    </label>
 
-      <span class="pill" data-search="食事">食事</span>
+    <input id="searchBase"
 
-      <span class="pill" data-search="温泉">温泉</span>
+      placeholder="例：河口湖、○○キャンプ場">
 
-      <span class="pill" data-search="観光">観光</span>
+    <label class="small">
 
-      <span class="pill" data-search="アクティビティ">アクティビティ</span>
+      探したいもの
 
-      <span class="pill" data-search="カフェ">カフェ</span>
+    </label>
 
-      <span class="pill" data-search="道の駅">道の駅</span>
+    <input id="search"
+
+      placeholder="例：温泉、蕎麦、カヤック">
+
+    <div id="searchPills">
+
+      <span class="pill"
+
+        data-search="食事">
+
+        🍴 食事
+
+      </span>
+
+      <span class="pill"
+
+        data-search="温泉">
+
+        ♨️ 温泉
+
+      </span>
+
+      <span class="pill"
+
+        data-search="観光">
+
+        📸 観光
+
+      </span>
+
+      <span class="pill"
+
+        data-search="アクティビティ">
+
+        🛶 遊ぶ
+
+      </span>
+
+      <span class="pill"
+
+        data-search="カフェ">
+
+        ☕ カフェ
+
+      </span>
+
+      <span class="pill"
+
+        data-search="道の駅">
+
+        🚙 道の駅
+
+      </span>
 
     </div>
 
     <br>
 
-    <button class="btn primary" id="searchPlacesBtn">
+    <button class="btn primary"
 
-      🔎 検索
+      id="searchPlacesBtn">
+
+      🔎 検索する
 
     </button>
 
   </div>
 
-  <div class="card" id="results"></div>
+  <div class="card" id="results">
+
+    <span class="small">
+
+      検索する場所と探したいものを入力してください。
+
+    </span>
+
+  </div>
 
   <div class="card">
 
-    <div class="hero">⭐ 行きたい</div>
+    <div class="hero">
+
+      ⭐ 行きたい
+
+    </div>
 
     <div id="saved"></div>
 
@@ -816,35 +1030,45 @@ nav button.active{
 
   <div class="card">
 
-    <div class="hero">📸 思い出</div>
+    <div class="hero">
 
-    <input
+      📸 思い出
 
-      id="media"
+    </div>
+
+    <input id="media"
 
       type="file"
 
       accept="image/*,video/*"
 
-      multiple
-
-    >
+      multiple>
 
     <p class="small">
 
-      写真・動画はこの画面で選択して確認できます。
+      写真・動画を選択すると、各素材にコメントを付けられます。
 
     </p>
 
-    <div id="mediaPreview" class="media-grid"></div>
+    <div id="mediaPreview"
+
+      class="media-grid">
+
+    </div>
 
   </div>
 
   <div class="card">
 
-    <div class="hero">📍 訪問記録</div>
+    <div class="hero">
 
-    <button class="btn primary" id="visitBtn">
+      📍 訪問記録
+
+    </div>
+
+    <button class="btn primary"
+
+      id="visitBtn">
 
       現在地を記録
 
@@ -856,31 +1080,75 @@ nav button.active{
 
   <div class="card video-panel">
 
-    <div class="hero">🎬 動画作成モード</div>
+    <div class="hero">
+
+      🎬 動画作成モード
+
+    </div>
 
     <p class="small">
 
-      選んだ写真・動画を順番にプレビューできます。
+      写真・動画を順番に再生し、コメントとBGMを付けてプレビューできます。
 
     </p>
 
-    <input
+    <input id="videoTitle"
 
-      id="videoTitle"
+      placeholder="動画タイトル（例：河口湖の思い出）">
 
-      placeholder="動画タイトル（例：河口湖の思い出）"
+    <label class="small">
 
-    >
+      バックミュージック
 
-    <div class="grid">
+    </label>
 
-      <button class="btn primary" id="startVideoModeBtn">
+    <input id="bgmFile"
+
+      type="file"
+
+      accept="audio/*">
+
+    <label class="small">
+
+      BGM音量
+
+    </label>
+
+    <div class="bgm-row">
+
+      <span>🔈</span>
+
+      <input id="bgmVolume"
+
+        type="range"
+
+        min="0"
+
+        max="1"
+
+        step="0.05"
+
+        value="0.35">
+
+      <span>🔊</span>
+
+    </div>
+
+    <div class="grid"
+
+      style="margin-top:12px">
+
+      <button class="btn primary"
+
+        id="startVideoModeBtn">
 
         ▶️ プレビュー開始
 
       </button>
 
-      <button class="btn" id="clearMediaBtn">
+      <button class="btn"
+
+        id="clearMediaBtn">
 
         素材をクリア
 
@@ -896,15 +1164,37 @@ nav button.active{
 
 <nav>
 
-  <button class="active" data-page="home">🏠<br>ホーム</button>
+  <button class="active"
 
-  <button data-page="trip">🗓️<br>旅行</button>
+    data-page="home">
 
-  <button data-page="packing">🧳<br>荷物</button>
+    🏠<br>ホーム
 
-  <button data-page="discover">🔎<br>発見</button>
+  </button>
 
-  <button data-page="memory">📸<br>思い出</button>
+  <button data-page="trip">
+
+    🗓️<br>旅行
+
+  </button>
+
+  <button data-page="packing">
+
+    🧳<br>荷物
+
+  </button>
+
+  <button data-page="discover">
+
+    🔎<br>発見
+
+  </button>
+
+  <button data-page="memory">
+
+    📸<br>思い出
+
+  </button>
 
 </nav>
 
@@ -920,8 +1210,11 @@ nav button.active{
 
   <div id="slideContainer"></div>
 
-</div>
+  <div id="slideComment"></div>
 
+  <audio id="bgmAudio" loop></audio>
+
+</div>
 <script>
 
 (function(){
@@ -932,145 +1225,37 @@ const K='tabiLogV22';
 
 const DEFAULT_PACK=[
 
-  {
+  {name:'テント',category:'キャンプ',done:false},
 
-    name:'テント',
+  {name:'寝袋',category:'キャンプ',done:false},
 
-    category:'キャンプ',
+  {name:'マット',category:'キャンプ',done:false},
 
-    done:false
+  {name:'ランタン',category:'キャンプ',done:false},
 
-  },
+  {name:'焚き火用品',category:'キャンプ',done:false},
 
-  {
+  {name:'チェア',category:'キャンプ',done:false},
 
-    name:'寝袋',
+  {name:'クーラーボックス',category:'キャンプ',done:false},
 
-    category:'キャンプ',
+  {name:'着替え',category:'衣類',done:false},
 
-    done:false
+  {name:'タオル',category:'基本',done:false},
 
-  },
+  {name:'雨具',category:'基本',done:false},
 
-  {
+  {name:'虫よけ',category:'基本',done:false},
 
-    name:'マット',
+  {name:'充電器',category:'電子機器',done:false},
 
-    category:'キャンプ',
-
-    done:false
-
-  },
-
-  {
-
-    name:'ランタン',
-
-    category:'キャンプ',
-
-    done:false
-
-  },
-
-  {
-
-    name:'焚き火用品',
-
-    category:'キャンプ',
-
-    done:false
-
-  },
-
-  {
-
-    name:'チェア',
-
-    category:'キャンプ',
-
-    done:false
-
-  },
-
-  {
-
-    name:'クーラーボックス',
-
-    category:'キャンプ',
-
-    done:false
-
-  },
-
-  {
-
-    name:'着替え',
-
-    category:'衣類',
-
-    done:false
-
-  },
-
-  {
-
-    name:'タオル',
-
-    category:'基本',
-
-    done:false
-
-  },
-
-  {
-
-    name:'雨具',
-
-    category:'基本',
-
-    done:false
-
-  },
-
-  {
-
-    name:'虫よけ',
-
-    category:'基本',
-
-    done:false
-
-  },
-
-  {
-
-    name:'充電器',
-
-    category:'電子機器',
-
-    done:false
-
-  },
-
-  {
-
-    name:'モバイルバッテリー',
-
-    category:'電子機器',
-
-    done:false
-
-  }
+  {name:'モバイルバッテリー',category:'電子機器',done:false}
 
 ];
 
 function cloneDefaults(){
 
-  return DEFAULT_PACK.map(
-
-    x => ({...x})
-
-  );
+  return DEFAULT_PACK.map(x=>({...x}));
 
 }
 
@@ -1078,15 +1263,7 @@ function loadDB(){
 
   try{
 
-    const p =
-
-      JSON.parse(
-
-        localStorage.getItem(K)
-
-        || 'null'
-
-      );
+    const p=JSON.parse(localStorage.getItem(K)||'null');
 
     if(!p){
 
@@ -1110,49 +1287,17 @@ function loadDB(){
 
     return {
 
-      trips:
+      trips:Array.isArray(p.trips)?p.trips:[],
 
-        Array.isArray(p.trips)
+      currentId:p.currentId||null,
 
-          ? p.trips
+      pack:Array.isArray(p.pack)?p.pack:cloneDefaults(),
 
-          : [],
+      saved:Array.isArray(p.saved)?p.saved:[],
 
-      currentId:
+      schedule:Array.isArray(p.schedule)?p.schedule:[],
 
-        p.currentId || null,
-
-      pack:
-
-        Array.isArray(p.pack)
-
-          ? p.pack
-
-          : cloneDefaults(),
-
-      saved:
-
-        Array.isArray(p.saved)
-
-          ? p.saved
-
-          : [],
-
-      schedule:
-
-        Array.isArray(p.schedule)
-
-          ? p.schedule
-
-          : [],
-
-      visits:
-
-        Array.isArray(p.visits)
-
-          ? p.visits
-
-          : []
+      visits:Array.isArray(p.visits)?p.visits:[]
 
     };
 
@@ -1180,64 +1325,57 @@ function loadDB(){
 
 let db=loadDB();
 
-let currentId=
-
-  db.currentId || null;
+let currentId=db.currentId||null;
 
 let mediaItems=[];
 
-const $=
+let bgmUrl='';
 
-  id => document.getElementById(id);
+const $=id=>document.getElementById(id);
 
 const save=()=>{
 
-  localStorage.setItem(
-
-    K,
-
-    JSON.stringify(db)
-
-  );
+  localStorage.setItem(K,JSON.stringify(db));
 
 };
 
 const currentTrip=()=>{
 
-  return db.trips.find(
-
-    x => x.id === currentId
-
-  );
+  return db.trips.find(x=>x.id===currentId);
 
 };
+
 function show(id,button){
 
   document
 
     .querySelectorAll('.page')
 
-    .forEach(
+    .forEach(x=>x.classList.remove('active'));
 
-      x => x.classList.remove('active')
+  const target=$(id);
 
-    );
+  void target.offsetWidth;
 
-  $(id).classList.add('active');
+  target.classList.add('active');
 
-  if(button){
+  document
 
-    document
+    .querySelectorAll('nav button')
 
-      .querySelectorAll('nav button')
+    .forEach(x=>x.classList.remove('active'));
 
-      .forEach(
+  const nav=button||navButton(id);
 
-        x => x.classList.remove('active')
+  if(nav){
 
-      );
+    nav.classList.add('active');
 
-    button.classList.add('active');
+  }
+
+  if(id==='discover'){
+
+    fillSearchBase();
 
   }
 
@@ -1283,15 +1421,13 @@ function newTrip(){
 
     'lodging',
 
-    'nap',
-
     'memo'
 
-  ].forEach(
+  ].forEach(id=>{
 
-    id => $(id).value=''
+    $(id).value='';
 
-  );
+  });
 
   db.schedule=[];
 
@@ -1313,15 +1449,15 @@ function saveTrip(){
 
     id:
 
-      currentId
+      currentId||
 
-      || Date.now().toString(),
+      Date.now().toString(),
 
     name:
 
-      $('name').value.trim()
+      $('name').value.trim()||
 
-      || '名称未設定の旅行',
+      '名称未設定の旅行',
 
     destination:
 
@@ -1339,10 +1475,6 @@ function saveTrip(){
 
       $('lodging').value.trim(),
 
-    nap:
-
-      $('nap').value.trim(),
-
     memo:
 
       $('memo').value.trim()
@@ -1353,7 +1485,7 @@ function saveTrip(){
 
     db.trips.findIndex(
 
-      x => x.id === t.id
+      x=>x.id===t.id
 
     );
 
@@ -1373,6 +1505,8 @@ function saveTrip(){
 
   save();
 
+  fillSearchBase();
+
   render();
 
   alert('旅行を保存しました');
@@ -1385,7 +1519,7 @@ function openTrip(id){
 
     db.trips.find(
 
-      x => x.id === id
+      x=>x.id===id
 
     );
 
@@ -1399,31 +1533,29 @@ function openTrip(id){
 
   $('name').value=
 
-    t.name || '';
+    t.name||'';
 
   $('dest').value=
 
-    t.destination || '';
+    t.destination||'';
 
   $('start').value=
 
-    t.start || '';
+    t.start||'';
 
   $('end').value=
 
-    t.end || '';
+    t.end||'';
 
   $('lodging').value=
 
-    t.lodging || '';
-
-  $('nap').value=
-
-    t.nap || '';
+    t.lodging||'';
 
   $('memo').value=
 
-    t.memo || '';
+    t.memo||'';
+
+  fillSearchBase();
 
   show(
 
@@ -1455,7 +1587,7 @@ function deleteTrip(id){
 
     db.trips.filter(
 
-      x => x.id !== id
+      x=>x.id!==id
 
     );
 
@@ -1497,7 +1629,7 @@ function addPack(){
 
     db.pack.some(
 
-      x => x.name===n
+      x=>x.name===n
 
     )
 
@@ -1561,31 +1693,27 @@ function togglePack(i){
 
 function restorePack(){
 
-  DEFAULT_PACK.forEach(
+  DEFAULT_PACK.forEach(item=>{
 
-    item=>{
+    if(
 
-      if(
+      !db.pack.some(
 
-        !db.pack.some(
+        x=>x.name===item.name
 
-          x => x.name===item.name
+      )
 
-        )
+    ){
 
-      ){
+      db.pack.push({
 
-        db.pack.push(
+        ...item
 
-          {...item}
-
-        );
-
-      }
+      });
 
     }
 
-  );
+  });
 
   save();
 
@@ -1631,19 +1759,19 @@ function addSchedule(){
 
       '日時（例：8/15 12:00）'
 
-    ) || '';
+    )||'';
 
   const place=
 
-    prompt('場所') || '';
+    prompt('場所')||'';
 
   db.schedule.push({
 
-    title,
+    title:title,
 
-    date,
+    date:date,
 
-    place
+    place:place
 
   });
 
@@ -1653,15 +1781,65 @@ function addSchedule(){
 
 }
 
+function fillSearchBase(){
+
+  const t=currentTrip();
+
+  if(
+
+    !$('searchBase')
+
+      .value
+
+      .trim()
+
+  ){
+
+    $('searchBase').value=
+
+      (
+
+        t?.destination||
+
+        t?.lodging||
+
+        ''
+
+      ).trim();
+
+  }
+
+}
+
 function setSearch(x){
 
   $('search').value=x;
 
+  document
+
+    .querySelectorAll(
+
+      '[data-search]'
+
+    )
+
+    .forEach(el=>{
+
+      el.classList.toggle(
+
+        'selected',
+
+        el.dataset.search===x
+
+      );
+
+    });
+
 }
 
-function quickSearch(x){
+function openConcierge(){
 
-  $('search').value=x;
+  fillSearchBase();
 
   show(
 
@@ -1671,7 +1849,45 @@ function quickSearch(x){
 
   );
 
-  searchPlaces();
+}
+
+function expandSearchWord(q){
+
+  const s=q.trim();
+
+  const table={
+
+    '温泉':
+
+      '日帰り温泉 温浴施設 露天風呂',
+
+    '日帰り温泉':
+
+      '日帰り温泉 温浴施設 露天風呂',
+
+    '食事':
+
+      'レストラン ランチ ご当地グルメ',
+
+    '観光':
+
+      '観光スポット 名所 景勝地',
+
+    'アクティビティ':
+
+      'アクティビティ 体験 レジャー',
+
+    'カフェ':
+
+      'カフェ 喫茶店',
+
+    '道の駅':
+
+      '道の駅'
+
+  };
+
+  return table[s]||s;
 
 }
 
@@ -1679,25 +1895,81 @@ function searchPlaces(){
 
   const q=
 
-    $('search').value
+    $('search').value.trim()||
 
-    || '観光';
+    '観光';
 
-  const d=
+  let base=
 
-    currentTrip()?.destination
+    $('searchBase')
 
-    || '';
+      .value
 
-  const url=
+      .trim();
 
-    'https://www.google.com/maps/search/?api=1&query='
+  if(!base){
 
-    + encodeURIComponent(
+    const t=currentTrip();
 
-        q+' '+d
+    base=
 
-      );
+      (
+
+        t?.destination||
+
+        t?.lodging||
+
+        ''
+
+      ).trim();
+
+  }
+
+  if(!base){
+
+    alert(
+
+      '「検索する場所」を入力してください'
+
+    );
+
+    $('searchBase').focus();
+
+    return;
+
+  }
+
+  const expanded=
+
+    expandSearchWord(q);
+
+  const mapsQuery=
+
+    `${expanded} ${base}`;
+
+  const webQuery=
+
+    `${base} 周辺 ${expanded}`;
+
+  const mapsUrl=
+
+    'https://www.google.com/maps/search/?api=1&query='+
+
+    encodeURIComponent(
+
+      mapsQuery
+
+    );
+
+  const webUrl=
+
+    'https://www.google.com/search?q='+
+
+    encodeURIComponent(
+
+      webQuery
+
+    );
 
   $('results').innerHTML=
 
@@ -1705,37 +1977,59 @@ function searchPlaces(){
 
     <div class="hero">
 
-      📍 ${escapeHtml(q)}
+      📍 ${escapeHtml(base)} 周辺
 
     </div>
 
-    <p class="small">
+    <p>
 
-      「${escapeHtml(
+      <b>${escapeHtml(q)}</b>
 
-        d || '旅先'
-
-      )}」周辺を地図で検索します。
+      を探します。
 
     </p>
 
-    <a
+    <p class="small">
 
-      class="btn primary"
+      検索語を
 
-      style="display:inline-block;text-decoration:none"
+      「${escapeHtml(expanded)}」
 
-      target="_blank"
+      まで広げて検索します。
 
-      rel="noopener"
+    </p>
 
-      href="${url}"
+    <div class="search-actions">
 
-    >
+      <a
 
-      地図で見る
+        class="btn primary search-link"
 
-    </a>
+        target="_blank"
+
+        rel="noopener"
+
+        href="${mapsUrl}">
+
+        🗺️ Googleマップで探す
+
+      </a>
+
+      <a
+
+        class="btn search-link"
+
+        target="_blank"
+
+        rel="noopener"
+
+        href="${webUrl}">
+
+        🌐 Webで探す
+
+      </a>
+
+    </div>
 
     `;
 
@@ -1765,55 +2059,55 @@ function visit(){
 
     .getCurrentPosition(
 
-      p=>{
+    p=>{
 
-        db.visits.unshift({
+      db.visits.unshift({
 
-          name:
+        name:
 
-            currentTrip()
+          currentTrip()
 
-              ?.destination
+          ?.destination||
 
-            || '現在地',
+          '現在地',
 
-          time:
+        time:
 
-            new Date()
+          new Date()
 
-              .toLocaleString(
+          .toLocaleString(
 
-                'ja-JP'
+            'ja-JP'
 
-              ),
+          ),
 
-          lat:
+        lat:
 
-            p.coords.latitude,
+          p.coords.latitude,
 
-          lon:
+        lon:
 
-            p.coords.longitude
+          p.coords.longitude
 
-        });
+      });
 
-        save();
+      save();
 
-        render();
+      render();
 
-      },
+    },
 
-      ()=>{
+    ()=>{
 
-        alert(
+      alert(
 
-          '位置情報を許可してください'
+        '位置情報を許可してください'
 
-        );
+      );
 
-      }
+    }
 
-    );
+  );
 
 }
 
@@ -1841,79 +2135,77 @@ async function weather(){
 
     .getCurrentPosition(
 
-      async p=>{
+    async p=>{
 
-        try{
+      try{
 
-          const u=
+        const u=
 
-            `https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,weather_code&timezone=auto`;
+          `https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,weather_code&timezone=auto`;
 
-          const j=
+        const r=
 
-            await (
+          await fetch(u);
 
-              await fetch(u)
+        const j=
 
-            ).json();
+          await r.json();
 
-          $('weatherBox')
+        $('weatherBox')
 
-            .textContent=
+          .textContent=
 
-            `現在 ${j.current.temperature_2m}℃　天気コード ${j.current.weather_code}`;
+          `現在 ${j.current.temperature_2m}℃　天気コード ${j.current.weather_code}`;
 
-        }catch(e){
+      }catch(e){
 
-          $('weatherBox')
+        $('weatherBox')
 
-            .textContent=
+          .textContent=
 
-            '天気を取得できませんでした';
-
-        }
-
-      },
-
-      ()=>{
-
-        alert(
-
-          '位置情報を許可してください'
-
-        );
+          '天気を取得できませんでした';
 
       }
 
-    );
+    },
+
+    ()=>{
+
+      alert(
+
+        '位置情報を許可してください'
+
+      );
+
+    }
+
+  );
 
 }
 
 function escapeHtml(s){
 
-  return String(
+  return String(s??'')
 
-    s ?? ''
+    .replace(
 
-  ).replace(
+      /[&<>"']/g,
 
-    /[&<>"']/g,
+      c=>({
 
-    c=>({
+        '&':'&amp;',
 
-      '&':'&amp;',
+        '<':'&lt;',
 
-      '<':'&lt;',
+        '>':'&gt;',
 
-      '>':'&gt;',
+        '"':'&quot;',
 
-      '"':'&quot;',
+        "'":'&#39;'
 
-      "'":'&#39;'
+      }[c])
 
-    }[c])
-
-  );
+    );
 
 }
 
@@ -1921,11 +2213,15 @@ function handleMedia(files){
 
   mediaItems.forEach(
 
-    x=>URL.revokeObjectURL(
+    x=>{
 
-      x.url
+      URL.revokeObjectURL(
 
-    )
+        x.url
+
+      );
+
+    }
 
   );
 
@@ -1935,7 +2231,7 @@ function handleMedia(files){
 
       file=>({
 
-        file,
+        file:file,
 
         url:
 
@@ -1947,7 +2243,9 @@ function handleMedia(files){
 
         type:
 
-          file.type
+          file.type,
+
+        comment:''
 
       })
 
@@ -1965,71 +2263,129 @@ function renderMedia(){
 
     mediaItems.length
 
-    ? mediaItems.map(
+    ?
+
+    mediaItems
+
+      .map(
 
         (x,i)=>{
 
           const media=
 
-            x.type.startsWith(
+            x.type
 
-              'video/'
+              .startsWith(
 
-            )
+                'video/'
 
-            ? `
+              )
 
-              <video
+            ?
 
-                src="${x.url}"
+            `
 
-                controls
+            <video
 
-                playsinline
+              src="${x.url}"
 
-              ></video>
+              controls
 
-              `
+              playsinline>
 
-            : `
+            </video>
 
-              <img
+            `
 
-                src="${x.url}"
+            :
 
-                alt=""
+            `
 
-              >
+            <img
 
-              `;
+              src="${x.url}"
+
+              alt="">
+
+            `;
 
           return `
 
-            <div class="media-card">
+          <div class="media-card">
 
-              ${media}
+            ${media}
 
-              <div class="media-name">
+            <div class="media-name">
 
-                ${i+1}.
+              ${i+1}.
 
-                ${escapeHtml(
-
-                  x.file.name
-
-                )}
-
-              </div>
+              ${escapeHtml(x.file.name)}
 
             </div>
+
+            <textarea
+
+              class="media-comment"
+
+              data-media-comment="${i}"
+
+              placeholder="この場面のコメント">${escapeHtml(x.comment||'')}</textarea>
+
+          </div>
 
           `;
 
         }
 
-      ).join('')
+      )
 
-    : '';
+      .join('')
+
+    :
+
+    '';
+
+  document
+
+    .querySelectorAll(
+
+      '[data-media-comment]'
+
+    )
+
+    .forEach(
+
+      el=>{
+
+        el.oninput=()=>{
+
+          const i=
+
+            Number(
+
+              el.dataset.mediaComment
+
+            );
+
+          if(
+
+            mediaItems[i]
+
+          ){
+
+            mediaItems[i]
+
+              .comment=
+
+              el.value;
+
+          }
+
+        };
+
+      }
+
+    );
 
 }
 
@@ -2037,11 +2393,15 @@ function clearMedia(){
 
   mediaItems.forEach(
 
-    x=>URL.revokeObjectURL(
+    x=>{
 
-      x.url
+      URL.revokeObjectURL(
 
-    )
+        x.url
+
+      );
+
+    }
 
   );
 
@@ -2050,6 +2410,50 @@ function clearMedia(){
   $('media').value='';
 
   renderMedia();
+
+}
+
+function setBgm(file){
+
+  if(bgmUrl){
+
+    URL.revokeObjectURL(
+
+      bgmUrl
+
+    );
+
+  }
+
+  bgmUrl='';
+
+  const audio=
+
+    $('bgmAudio');
+
+  audio.pause();
+
+  audio.removeAttribute(
+
+    'src'
+
+  );
+
+  if(file){
+
+    bgmUrl=
+
+      URL.createObjectURL(
+
+        file
+
+      );
+
+    audio.src=
+
+      bgmUrl;
+
+  }
 
 }
 
@@ -2073,11 +2477,23 @@ function startVideoMode(){
 
   let i=0;
 
-  $('slideshow')
+  const slide=
 
-    .classList
+    $('slideshow');
 
-    .add('active');
+  const container=
+
+    $('slideContainer');
+
+  const audio=
+
+    $('bgmAudio');
+
+  slide.classList.add(
+
+    'active'
+
+  );
 
   $('slideCaption')
 
@@ -2089,21 +2505,45 @@ function startVideoMode(){
 
       .trim()
 
-    || '旅の思い出';
+    ||
 
-  const container=
+    '旅の思い出';
 
-    $('slideContainer');
+  audio.volume=
+
+    Number(
+
+      $('bgmVolume')
+
+        .value||
+
+      0.35
+
+    );
+
+  if(bgmUrl){
+
+    audio.currentTime=0;
+
+    audio.play()
+
+      .catch(()=>{});
+
+  }
 
   function showOne(){
 
     if(
 
-      !$('slideshow')
+      !slide
 
         .classList
 
-        .contains('active')
+        .contains(
+
+          'active'
+
+        )
 
     ){
 
@@ -2115,53 +2555,87 @@ function startVideoMode(){
 
       mediaItems[i];
 
+    $('slideComment')
+
+      .textContent=
+
+      x.comment||'';
+
+    container
+
+      .classList
+
+      .remove(
+
+        'fade-in'
+
+      );
+
+    void container.offsetWidth;
+
+    container
+
+      .classList
+
+      .add(
+
+        'fade-in'
+
+      );
+
     container.innerHTML=
 
-      x.type.startsWith(
+      x.type
 
-        'video/'
+        .startsWith(
 
-      )
+          'video/'
 
-      ? `
+        )
 
-        <video
+      ?
 
-          id="slideMedia"
+      `
 
-          src="${x.url}"
+      <video
 
-          controls
+        id="slideMedia"
 
-          autoplay
+        src="${x.url}"
 
-          playsinline
+        controls
 
-        ></video>
+        autoplay
 
-        `
+        playsinline>
 
-      : `
+      </video>
 
-        <img
+      `
 
-          id="slideMedia"
+      :
 
-          src="${x.url}"
+      `
 
-          alt=""
+      <img
 
-        >
+        id="slideMedia"
 
-        `;
+        src="${x.url}"
+
+        alt="">
+
+      `;
 
     if(
 
-      !x.type.startsWith(
+      !x.type
 
-        'video/'
+        .startsWith(
 
-      )
+          'video/'
+
+        )
 
     ){
 
@@ -2171,19 +2645,23 @@ function startVideoMode(){
 
           if(
 
-            $('slideshow')
+            slide
 
               .classList
 
-              .contains('active')
+              .contains(
+
+                'active'
+
+              )
 
           ){
 
             i=
 
-              (i+1)
+              (i+1)%
 
-              % mediaItems.length;
+              mediaItems.length;
 
             showOne();
 
@@ -2191,7 +2669,7 @@ function startVideoMode(){
 
         },
 
-        2500
+        3000
 
       );
 
@@ -2211,9 +2689,9 @@ function startVideoMode(){
 
         i=
 
-          (i+1)
+          (i+1)%
 
-          % mediaItems.length;
+          mediaItems.length;
 
         showOne();
 
@@ -2233,11 +2711,27 @@ function stopVideoMode(){
 
     .classList
 
-    .remove('active');
+    .remove(
+
+      'active'
+
+    );
 
   $('slideContainer')
 
     .innerHTML='';
+
+  $('slideComment')
+
+    .textContent='';
+
+  const audio=
+
+    $('bgmAudio');
+
+  audio.pause();
+
+  audio.currentTime=0;
 
 }
 
@@ -2253,75 +2747,61 @@ function render(){
 
     t
 
-    ? `
+    ?
 
-      <div class="hero">
+    `
 
-        📌 ${escapeHtml(
+    <div class="hero">
 
-          t.name
+      📌 ${escapeHtml(t.name)}
 
-        )}
+    </div>
 
-      </div>
+    <div class="small">
 
-      <div class="small">
+      ${escapeHtml(t.destination||'')}
 
-        ${escapeHtml(
+      　
 
-          t.destination || ''
+      ${escapeHtml(t.start||'')}
 
-        )}
+      ～
 
-        　
+      ${escapeHtml(t.end||'')}
 
-        ${escapeHtml(
+    </div>
 
-          t.start || ''
+    <br>
 
-        )}
+    <button
 
-         ～
+      class="btn primary"
 
-        ${escapeHtml(
+      data-open-trip="${t.id}">
 
-          t.end || ''
+      この旅行を開く
 
-        )}
+    </button>
 
-      </div>
+    `
 
-      <br>
+    :
 
-      <button
+    `
 
-        class="btn primary"
+    <div class="hero">
 
-        data-open-trip="${t.id}"
+      まだ旅行が登録されていません
 
-      >
+    </div>
 
-        この旅行を開く
+    <div class="small">
 
-      </button>
+      「新規旅行」から旅行を登録してください。
 
-      `
+    </div>
 
-    : `
-
-      <div class="hero">
-
-        まだ旅行が登録されていません
-
-      </div>
-
-      <div class="small">
-
-        「新規旅行」から旅行を登録してください。
-
-      </div>
-
-      `;
+    `;
 
   $('historyList')
 
@@ -2329,49 +2809,35 @@ function render(){
 
     db.trips.length
 
-    ? db.trips.map(
+    ?
 
-        x=>`
+    db.trips
 
-        <div class="result history-item">
+      .map(
 
-          <b
+        x=>
 
-            data-open-trip="${x.id}"
+        `
 
-          >
+        <div class="result">
 
-            ${escapeHtml(
+          <b data-open-trip="${x.id}">
 
-              x.name
-
-            )}
+            ${escapeHtml(x.name)}
 
           </b>
 
           <span class="small">
 
-            ${escapeHtml(
-
-              x.destination || ''
-
-            )}
+            ${escapeHtml(x.destination||'')}
 
             　
 
-            ${escapeHtml(
+            ${escapeHtml(x.start||'')}
 
-              x.start || ''
+            ～
 
-            )}
-
-             ～
-
-            ${escapeHtml(
-
-              x.end || ''
-
-            )}
+            ${escapeHtml(x.end||'')}
 
           </span>
 
@@ -2381,9 +2847,7 @@ function render(){
 
             class="btn"
 
-            data-open-trip="${x.id}"
-
-          >
+            data-open-trip="${x.id}">
 
             詳細
 
@@ -2393,9 +2857,7 @@ function render(){
 
             class="btn danger"
 
-            data-delete-trip="${x.id}"
-
-          >
+            data-delete-trip="${x.id}">
 
             削除
 
@@ -2405,47 +2867,47 @@ function render(){
 
         `
 
-      ).join('')
+      )
 
-    : `
+      .join('')
 
-      <div class="empty">
+    :
 
-        まだ旅行履歴がありません。
+    `
 
-      </div>
+    <div class="empty">
 
-      `;
+      まだ旅行履歴がありません。
+
+    </div>
+
+    `;
 
   if(t){
 
     $('name').value=
 
-      t.name || '';
+      t.name||'';
 
     $('dest').value=
 
-      t.destination || '';
+      t.destination||'';
 
     $('start').value=
 
-      t.start || '';
+      t.start||'';
 
     $('end').value=
 
-      t.end || '';
+      t.end||'';
 
     $('lodging').value=
 
-      t.lodging || '';
-
-    $('nap').value=
-
-      t.nap || '';
+      t.lodging||'';
 
     $('memo').value=
 
-      t.memo || '';
+      t.memo||'';
 
   }
 
@@ -2461,17 +2923,21 @@ function render(){
 
     db.pack.length
 
-    ? Math.round(
+    ?
 
-        done
+    Math.round(
 
-        / db.pack.length
+      done/
 
-        * 100
+      db.pack.length*
 
-      )
+      100
 
-    : 0;
+    )
+
+    :
+
+    0;
 
   $('packProgress')
 
@@ -2489,9 +2955,15 @@ function render(){
 
     db.pack.length
 
-    ? db.pack.map(
+    ?
 
-        (x,i)=>`
+    db.pack
+
+      .map(
+
+        (x,i)=>
+
+        `
 
         <li class="pack-item">
 
@@ -2501,27 +2973,17 @@ function render(){
 
             data-pack-toggle="${i}"
 
-            ${x.done ? 'checked' : ''}
-
-          >
+            ${x.done?'checked':''}>
 
           <span class="pack-name">
 
-            ${escapeHtml(
-
-              x.name
-
-            )}
+            ${escapeHtml(x.name)}
 
             <br>
 
             <span class="category">
 
-              ${escapeHtml(
-
-                x.category || '基本'
-
-              )}
+              ${escapeHtml(x.category||'基本')}
 
             </span>
 
@@ -2531,9 +2993,7 @@ function render(){
 
             class="btn danger"
 
-            data-pack-delete="${i}"
-
-          >
+            data-pack-delete="${i}">
 
             削除
 
@@ -2543,21 +3003,29 @@ function render(){
 
         `
 
-      ).join('')
+      )
 
-    : `
+      .join('')
 
-      <div class="empty">
+    :
 
-        持ち物がありません。
+    `
 
-        「基本項目を復元」または
+    <div class="empty">
 
-        「＋追加」を使ってください。
+      持ち物がありません。
 
-      </div>
+      「基本項目を復元」
 
-      `;
+      または
+
+      「＋追加」
+
+      を使ってください。
+
+    </div>
+
+    `;
 
   $('schedule')
 
@@ -2565,35 +3033,29 @@ function render(){
 
     db.schedule.length
 
-    ? db.schedule.map(
+    ?
 
-        x=>`
+    db.schedule
+
+      .map(
+
+        x=>
+
+        `
 
         <div class="result">
 
           <b>
 
-            ${escapeHtml(
-
-              x.title
-
-            )}
+            ${escapeHtml(x.title)}
 
           </b>
 
           <span class="small">
 
-            ${escapeHtml(
+            ${escapeHtml(x.date||'')}
 
-              x.date || ''
-
-            )}
-
-            ${escapeHtml(
-
-              x.place || ''
-
-            )}
+            ${escapeHtml(x.place||'')}
 
           </span>
 
@@ -2601,17 +3063,21 @@ function render(){
 
         `
 
-      ).join('')
+      )
 
-    : `
+      .join('')
 
-      <span class="small">
+    :
 
-        まだ予定がありません。
+    `
 
-      </span>
+    <span class="small">
 
-      `;
+      まだ予定がありません。
+
+    </span>
+
+    `;
 
   $('saved')
 
@@ -2619,19 +3085,21 @@ function render(){
 
     db.saved.length
 
-    ? db.saved.map(
+    ?
 
-        x=>`
+    db.saved
+
+      .map(
+
+        x=>
+
+        `
 
         <div class="result">
 
           <b>
 
-            ${escapeHtml(
-
-              x.name
-
-            )}
+            ${escapeHtml(x.name)}
 
           </b>
 
@@ -2639,17 +3107,21 @@ function render(){
 
         `
 
-      ).join('')
+      )
 
-    : `
+      .join('')
 
-      <span class="small">
+    :
 
-        まだありません。
+    `
 
-      </span>
+    <span class="small">
 
-      `;
+      まだありません。
+
+    </span>
+
+    `;
 
   $('visits')
 
@@ -2657,29 +3129,27 @@ function render(){
 
     db.visits.length
 
-    ? db.visits.map(
+    ?
 
-        x=>`
+    db.visits
+
+      .map(
+
+        x=>
+
+        `
 
         <div class="result">
 
           <b>
 
-            ${escapeHtml(
-
-              x.name
-
-            )}
+            ${escapeHtml(x.name)}
 
           </b>
 
           <span class="small">
 
-            ${escapeHtml(
-
-              x.time
-
-            )}
+            ${escapeHtml(x.time)}
 
           </span>
 
@@ -2687,17 +3157,21 @@ function render(){
 
         `
 
-      ).join('')
+      )
 
-    : `
+      .join('')
 
-      <span class="small">
+    :
 
-        まだ記録がありません。
+    `
 
-      </span>
+    <span class="small">
 
-      `;
+      まだ記録がありません。
+
+    </span>
+
+    `;
 
   document
 
@@ -2713,7 +3187,9 @@ function render(){
 
         el.onclick=
 
-          ()=>openTrip(
+        ()=>
+
+          openTrip(
 
             el.dataset.openTrip
 
@@ -2735,7 +3211,9 @@ function render(){
 
         el.onclick=
 
-          ()=>deleteTrip(
+        ()=>
+
+          deleteTrip(
 
             el.dataset.deleteTrip
 
@@ -2757,7 +3235,9 @@ function render(){
 
         el.onchange=
 
-          ()=>togglePack(
+        ()=>
+
+          togglePack(
 
             Number(
 
@@ -2783,7 +3263,9 @@ function render(){
 
         el.onclick=
 
-          ()=>deletePack(
+        ()=>
+
+          deletePack(
 
             Number(
 
@@ -2811,7 +3293,9 @@ document
 
       b.onclick=
 
-        ()=>show(
+      ()=>
+
+        show(
 
           b.dataset.page,
 
@@ -2835,31 +3319,11 @@ document
 
       x.onclick=
 
-        ()=>setSearch(
+      ()=>
+
+        setSearch(
 
           x.dataset.search
-
-        )
-
-  );
-
-document
-
-  .querySelectorAll(
-
-    '[data-quick]'
-
-  )
-
-  .forEach(
-
-    x=>
-
-      x.onclick=
-
-        ()=>quickSearch(
-
-          x.dataset.quick
 
         )
 
@@ -2876,6 +3340,12 @@ $('historyBtn')
   .onclick=
 
   showHistory;
+
+$('openConciergeBtn')
+
+  .onclick=
+
+  openConcierge;
 
 $('goHomeBtn')
 
@@ -2935,11 +3405,13 @@ $('media')
 
   .onchange=
 
-  e=>handleMedia(
+  e=>
 
-    e.target.files
+    handleMedia(
 
-  );
+      e.target.files
+
+    );
 
 $('clearMediaBtn')
 
@@ -2959,6 +3431,36 @@ $('slideClose')
 
   stopVideoMode;
 
+$('bgmFile')
+
+  .onchange=
+
+  e=>
+
+    setBgm(
+
+      e.target.files[0]||
+
+      null
+
+    );
+
+$('bgmVolume')
+
+  .oninput=
+
+  e=>
+
+    $('bgmAudio')
+
+      .volume=
+
+      Number(
+
+        e.target.value
+
+      );
+
 if(
 
   'serviceWorker'
@@ -2973,25 +3475,29 @@ if(
 
       'load',
 
-      ()=>navigator
+      ()=>
 
-        .serviceWorker
+        navigator
 
-        .register(
+          .serviceWorker
 
-          'sw.js'
+          .register(
 
-        )
+            'sw.js'
 
-        .catch(
+          )
 
-          ()=>{}
+          .catch(
 
-        )
+            ()=>{}
+
+          )
 
     );
 
 }
+
+fillSearchBase();
 
 render();
 
