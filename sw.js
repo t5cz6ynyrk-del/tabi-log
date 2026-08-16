@@ -1,4 +1,4 @@
-const CACHE = 'tabi-log-v5';
+const CACHE = 'tabi-log-v6';
 
 const ASSETS = ['./', './index.html', './manifest.webmanifest'];
 
@@ -50,7 +50,9 @@ self.addEventListener('fetch', event => {
 
         const copy = response.clone();
 
-        caches.open(CACHE)
+        caches
+
+          .open(CACHE)
 
           .then(cache => cache.put(event.request, copy))
 
@@ -62,7 +64,9 @@ self.addEventListener('fetch', event => {
 
       .catch(() =>
 
-        caches.match(event.request)
+        caches
+
+          .match(event.request)
 
           .then(cached => cached || caches.match('./index.html'))
 
