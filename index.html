@@ -1104,9 +1104,7 @@ nav button.active{
 
     <input id="bgmFile"
 
-      type="file"
-
-      accept="audio/*">
+      type="file">
 
     <label class="small">
 
@@ -2414,6 +2412,28 @@ function clearMedia(){
 }
 
 function setBgm(file){
+
+  if(file){
+
+    const name=(file.name||'').toLowerCase();
+
+    const type=(file.type||'').toLowerCase();
+
+    const allowedExt=/\.(m4a|mp3|wav|aac|mp4|caf|aif|aiff)$/i.test(name);
+
+    const allowedType=type.startsWith('audio/')||type==='video/mp4';
+
+    if(!allowedExt&&!allowedType){
+
+      alert('BGMには音声ファイル（M4A・MP3・WAVなど）を選択してください');
+
+      $('bgmFile').value='';
+
+      return;
+
+    }
+
+  }
 
   if(bgmUrl){
 
