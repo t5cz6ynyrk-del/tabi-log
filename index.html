@@ -590,9 +590,24 @@ nav button.active{
 
   max-width:100%;
 
-  max-height:72vh
+  max-height:72vh;
+
+  transform-origin:center center
 
 }
+
+#slideMedia.fx-zoom-in{animation:zoomIn 4s ease-in-out both}
+#slideMedia.fx-zoom-out{animation:zoomOut 4s ease-in-out both}
+#slideMedia.fx-pan-left{animation:panLeft 4s ease-in-out both}
+#slideMedia.fx-pan-right{animation:panRight 4s ease-in-out both}
+#slideMedia.fx-gentle{animation:gentle 5s ease-in-out both}
+#slideMedia.fx-pop{animation:pop 2.7s ease-in-out both}
+@keyframes zoomIn{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes zoomOut{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes panLeft{from{transform:scale(1.1) translateX(3%)}to{transform:scale(1.1) translateX(-3%)}}
+@keyframes panRight{from{transform:scale(1.1) translateX(-3%)}to{transform:scale(1.1) translateX(3%)}}
+@keyframes gentle{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.08)}100%{transform:scale(1.03)}}
 
 #slideCaption{
 
@@ -676,7 +691,7 @@ nav button.active{
 
   <h1>🏕️ 旅ログ</h1>
 
-  <div class="sub">旅の前から、旅の後まで。 v2.4</div>
+  <div class="sub">旅の前から、旅の後まで。 v2.5</div>
 
 </header>
 
@@ -1128,13 +1143,27 @@ nav button.active{
 
     <p class="small">
 
-      写真・動画を順番に再生し、コメントとBGMを付けてプレビューできます。
+      撮影順（選択した順）を保ったまま、写真にズームや横移動などの変化を付けて再生します。
 
     </p>
 
     <input id="videoTitle"
 
       placeholder="動画タイトル（例：河口湖の思い出）">
+
+    <label class="small">
+      動画スタイル
+    </label>
+
+    <select id="videoStyle">
+      <option value="auto">✨ おまかせ（時系列＋自動演出）</option>
+      <option value="calm">🌿 ゆったり</option>
+      <option value="fun">🎉 楽しい</option>
+    </select>
+
+    <p class="small">
+      ※順番は入れ替えず、見せ方だけ変化させます。
+    </p>
 
     <label class="small">
 
@@ -2580,6 +2609,11 @@ function startVideoMode(){
 
   let i=0;
 
+  const style=($('videoStyle')&&$('videoStyle').value)||'auto';
+  const autoFx=['fx-zoom-in','fx-pan-left','fx-zoom-out','fx-pan-right'];
+  const calmFx=['fx-gentle','fx-zoom-in','fx-zoom-out'];
+  const funFx=['fx-pop','fx-pan-right','fx-zoom-in','fx-pan-left'];
+
   const slide=
 
     $('slideshow');
@@ -2730,6 +2764,12 @@ function startVideoMode(){
 
       `;
 
+    if(!x.type.startsWith('video/')){
+      const img=container.querySelector('#slideMedia');
+      const effects=style==='calm'?calmFx:(style==='fun'?funFx:autoFx);
+      img.classList.add(effects[i%effects.length]);
+    }
+
     if(
 
       !x.type
@@ -2772,7 +2812,7 @@ function startVideoMode(){
 
         },
 
-        3000
+        style==='calm'?5000:(style==='fun'?2700:4000)
 
       );
 
