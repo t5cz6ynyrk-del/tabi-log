@@ -8,23 +8,31 @@
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#0877c9">
 
-<title>旅ログ v2.1 ポップ版</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="旅ログ">
+
+<link rel="manifest" href="manifest.webmanifest">
+
+<title>🏕️ 旅ログ v2.2</title>
 
 <style>
 
 :root{
 
-  --bg:#f4f4f4;
+  --blue:#0877c9;
 
-  --card:#ffffff;
+  --blue2:#25a5ef;
 
-  --text:#1f1f1f;
+  --light:#eef8ff;
 
-  --sub:#777;
+  --ink:#17324d;
 
-  --line:#e5e5e5;
+  --muted:#6d8193;
+
+  --danger:#c33;
 
 }
 
@@ -33,6 +41,10 @@
 body{
 
   margin:0;
+
+  background:#f6fbff;
+
+  color:var(--ink);
 
   font-family:
 
@@ -46,95 +58,109 @@ body{
 
     sans-serif;
 
-  background:var(--bg);
-
-  color:var(--text);
-
 }
 
 header{
 
-  background:#111;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
 
   color:#fff;
 
-  padding:18px 16px 14px;
+  padding:28px 18px 20px;
 
-  position:sticky;
+  border-radius:0 0 24px 24px;
 
-  top:0;
-
-  z-index:10;
+  box-shadow:0 5px 18px #0877c933;
 
 }
 
-header h1{
+h1{
 
   margin:0;
 
-  font-size:24px;
+  font-size:30px;
 
-  font-weight:800;
+  font-weight:900;
 
-  letter-spacing:.04em;
-
-}
-
-header .sub{
-
-  font-size:12px;
-
-  opacity:.8;
-
-  margin-top:3px;
+  letter-spacing:.03em;
 
 }
 
-main{
+.sub{
 
-  max-width:820px;
+  opacity:.95;
 
-  margin:0 auto;
+  margin-top:5px;
 
-  padding:14px 14px 90px;
+}
+
+.wrap{
+
+  max-width:720px;
+
+  margin:auto;
+
+  padding-bottom:92px;
 
 }
 
 .card{
 
-  background:var(--card);
+  background:#fff;
 
-  border-radius:18px;
+  border-radius:20px;
 
   padding:16px;
 
-  margin:0 0 14px;
+  margin:14px;
 
-  box-shadow:0 1px 5px rgba(0,0,0,.08);
+  box-shadow:0 3px 15px #0877c91a;
 
 }
 
-h2{
+.grid{
 
-  font-size:19px;
+  display:grid;
 
-  margin:0 0 12px;
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+}
+
+.btn{
+
+  border:0;
+
+  border-radius:16px;
+
+  padding:13px;
+
+  background:var(--light);
+
+  color:#075c99;
 
   font-weight:800;
 
-  letter-spacing:.02em;
+  font-size:15px;
+
+  font-family:inherit;
 
 }
 
-label{
+.primary{
 
-  font-size:13px;
+  background:var(--blue);
 
-  color:var(--sub);
+  color:#fff;
 
-  display:block;
+}
 
-  margin:8px 0 5px;
+.danger{
+
+  background:#fff0f0;
+
+  color:var(--danger);
 
 }
 
@@ -142,49 +168,25 @@ input,textarea,select{
 
   width:100%;
 
-  font:inherit;
-
-  padding:11px 12px;
-
-  border:1px solid #ccc;
+  border:1px solid #d5e6f2;
 
   border-radius:14px;
 
-  background:#fff;
+  padding:12px;
+
+  margin:5px 0 9px;
+
+  font-size:16px;
+
+  background:#fbfdff;
+
+  font-family:inherit;
 
 }
 
 textarea{
 
-  min-height:92px;
-
-  resize:vertical;
-
-}
-
-button{
-
-  font:inherit;
-
-  font-weight:700;
-
-  border:0;
-
-  border-radius:14px;
-
-  padding:11px 14px;
-
-  background:#111;
-
-  color:#fff;
-
-}
-
-button.secondary{
-
-  background:#e9e9e9;
-
-  color:#111;
+  min-height:80px;
 
 }
 
@@ -192,57 +194,65 @@ button.secondary{
 
   display:flex;
 
-  gap:8px;
+  justify-content:space-between;
+
+  gap:10px;
 
   align-items:center;
 
 }
 
-.row>*{flex:1}
-
-.actions{
-
-  display:flex;
-
-  gap:8px;
-
-  flex-wrap:wrap;
-
-  margin-top:10px;
-
-}
-
-.item{
-
-  border-top:1px solid var(--line);
-
-  padding:10px 0;
-
-}
-
-.item:first-child{border-top:0}
-
 .small{
-
-  font-size:12px;
-
-  color:var(--sub);
-
-}
-
-.empty{
 
   font-size:13px;
 
-  color:#999;
-
-  padding:4px 0;
+  color:var(--muted);
 
 }
 
-.hidden{
+.pill{
 
-  display:none!important;
+  display:inline-block;
+
+  background:#e7f5ff;
+
+  color:#08649e;
+
+  border-radius:20px;
+
+  padding:6px 10px;
+
+  margin:3px;
+
+  font-size:13px;
+
+}
+
+progress{
+
+  width:100%;
+
+  height:12px;
+
+  accent-color:var(--blue);
+
+}
+
+ul{
+
+  padding:0;
+
+  margin:0;
+
+  list-style:none;
+
+}
+
+li{
+
+  padding:10px 0;
+
+  border-bottom:1px solid #edf2f6;
 
 }
 
@@ -250,89 +260,279 @@ nav{
 
   position:fixed;
 
+  bottom:0;
+
   left:0;
 
   right:0;
 
-  bottom:0;
-
   background:#fff;
 
-  border-top:1px solid #ddd;
+  border-top:1px solid #dceaf3;
 
-  display:grid;
+  display:flex;
 
-  grid-template-columns:repeat(5,1fr);
+  justify-content:space-around;
 
-  z-index:20;
+  padding:8px;
 
-  padding-bottom:env(safe-area-inset-bottom);
+  padding-bottom:calc(8px + env(safe-area-inset-bottom));
+
+  z-index:5;
 
 }
 
 nav button{
 
-  border-radius:0;
+  background:none;
 
-  background:#fff;
+  border:0;
 
-  color:#666;
-
-  padding:10px 2px 8px;
+  color:#698195;
 
   font-size:12px;
+
+  padding:4px 9px;
+
+  font-family:inherit;
 
 }
 
 nav button.active{
 
-  color:#111;
+  color:var(--blue);
 
-  font-weight:800;
+  font-weight:900;
 
 }
 
-nav span{
+.page{display:none}
 
-  display:block;
+.page.active{display:block}
+
+.hero{
 
   font-size:20px;
 
-  line-height:1;
-
-  margin-bottom:4px;
+  font-weight:900;
 
 }
 
-.modal{
+.result{
+
+  padding:12px 0;
+
+  border-bottom:1px solid #e6eff5;
+
+}
+
+.result b{
+
+  display:block;
+
+}
+
+.home-choice{
+
+  padding:20px 14px;
+
+}
+
+.choice{
+
+  min-height:110px;
+
+  font-size:18px;
+
+}
+
+.choice span{
+
+  display:block;
+
+  font-size:13px;
+
+  margin-top:6px;
+
+  color:var(--muted);
+
+  font-weight:500;
+
+}
+
+.pack-item{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+}
+
+.pack-item input[type=checkbox]{
+
+  width:auto;
+
+  margin:0;
+
+}
+
+.pack-name{
+
+  flex:1;
+
+}
+
+.category{
+
+  font-size:12px;
+
+  color:#0877c9;
+
+}
+
+.empty{
+
+  text-align:center;
+
+  padding:20px;
+
+  color:var(--muted);
+
+}
+
+.media-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(2,minmax(0,1fr));
+
+  gap:10px;
+
+  margin-top:10px;
+
+}
+
+.media-card{
+
+  background:#f7fbff;
+
+  border:1px solid #dbeef9;
+
+  border-radius:14px;
+
+  padding:8px;
+
+  overflow:hidden;
+
+}
+
+.media-card img,
+
+.media-card video{
+
+  width:100%;
+
+  height:130px;
+
+  object-fit:cover;
+
+  border-radius:10px;
+
+  background:#000;
+
+}
+
+.media-name{
+
+  font-size:12px;
+
+  color:var(--muted);
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  margin-top:5px;
+
+}
+
+.video-panel{
+
+  background:linear-gradient(135deg,#eef8ff,#f8f0ff);
+
+  border:1px solid #d9e8f7;
+
+}
+
+#slideshow{
+
+  display:none;
 
   position:fixed;
 
   inset:0;
 
-  background:rgba(0,0,0,.45);
+  background:#000;
 
-  display:flex;
+  z-index:50;
 
-  align-items:flex-end;
+  align-items:center;
 
-  z-index:30;
+  justify-content:center;
+
+  flex-direction:column;
 
 }
 
-.modalBox{
+#slideshow.active{
 
-  background:#fff;
+  display:flex;
 
-  width:100%;
+}
 
-  border-radius:22px 22px 0 0;
+#slideMedia{
 
-  padding:18px;
+  max-width:100%;
 
-  max-height:85vh;
+  max-height:78vh;
 
-  overflow:auto;
+}
+
+#slideCaption{
+
+  color:#fff;
+
+  font-size:20px;
+
+  font-weight:800;
+
+  padding:16px;
+
+  text-align:center;
+
+}
+
+#slideClose{
+
+  position:absolute;
+
+  top:20px;
+
+  right:20px;
+
+  background:#ffffffdd;
+
+  color:#111;
+
+  border:0;
+
+  border-radius:20px;
+
+  padding:10px 14px;
 
 }
 
@@ -342,29 +542,35 @@ nav span{
 
 <body>
 
+<div class="wrap">
+
 <header>
 
-  <h1>旅ログ v2.1</h1>
+  <h1>🏕️ 旅ログ</h1>
 
-  <div class="sub">旅行記録・荷物・発見・思い出</div>
+  <div class="sub">旅の前から、旅の後まで。 v2.2</div>
 
 </header>
 
-<main>
+<section id="home" class="page active">
 
-<section id="homeView">
+  <div class="home-choice">
 
-  <div class="card">
+    <div class="grid">
 
-    <h2>旅をはじめる</h2>
+      <button class="btn primary choice" id="newTripBtn">
 
-    <div class="actions">
+        🆕 新規旅行
 
-      <button id="newTripBtn">新規旅行</button>
+        <span>新しい旅行を登録します</span>
 
-      <button id="historyBtn" class="secondary">
+      </button>
 
-        旅行履歴
+      <button class="btn choice" id="historyBtn">
+
+        📚 履歴
+
+        <span>過去の旅行を確認します</span>
 
       </button>
 
@@ -372,287 +578,347 @@ nav span{
 
   </div>
 
-  <div class="card">
-
-    <h2>現在の旅行</h2>
-
-    <div id="currentTrip"></div>
-
-  </div>
-
-</section>
-
-<section id="tripView" class="hidden">
+  <div class="card" id="homeSummary"></div>
 
   <div class="card">
 
-    <h2>旅行</h2>
+    <div class="hero">✨ 旅先コンシェルジュ</div>
 
-    <label>旅行名</label>
+    <div class="grid" style="margin-top:10px">
 
-    <input
+      <button class="btn" data-quick="食事">🍴 食事</button>
 
-      id="tripName"
+      <button class="btn" data-quick="日帰り温泉">♨️ 温泉</button>
 
-      placeholder="例：河口湖グランピング"
+      <button class="btn" data-quick="観光">📸 観光</button>
 
-    >
-
-    <div class="row">
-
-      <div>
-
-        <label>開始日</label>
-
-        <input id="startDate" type="date">
-
-      </div>
-
-      <div>
-
-        <label>終了日</label>
-
-        <input id="endDate" type="date">
-
-      </div>
-
-    </div>
-
-    <label>メモ</label>
-
-    <textarea
-
-      id="tripMemo"
-
-      placeholder="宿泊先、予定など"
-
-    ></textarea>
-
-    <div class="actions">
-
-      <button id="saveTripBtn">保存</button>
+      <button class="btn" data-quick="アクティビティ">🛶 遊ぶ</button>
 
     </div>
 
   </div>
 
+  <div class="card">
+
+    <div class="hero">🌦️ 天気</div>
+
+    <div id="weatherBox">現在地を取得して確認できます。</div>
+
+    <button class="btn primary" id="weatherBtn">天気を取得</button>
+
+  </div>
+
 </section>
 
-<section id="packView" class="hidden">
+<section id="trip" class="page">
 
   <div class="card">
 
-    <h2>荷物</h2>
+    <div class="hero">🗓️ 旅行</div>
 
-    <div class="row">
+    <input id="name" placeholder="旅行タイトル">
+
+    <input id="dest" placeholder="行き先（例：河口湖）">
+
+    <label class="small">開始日</label>
+
+    <input id="start" type="date">
+
+    <label class="small">終了日</label>
+
+    <input id="end" type="date">
+
+    <input id="lodging" placeholder="宿泊先">
+
+    <input id="nap" placeholder="なっぷ等の予約URL">
+
+    <textarea id="memo" placeholder="旅のメモ"></textarea>
+
+    <div class="grid">
+
+      <button class="btn" id="goHomeBtn">戻る</button>
+
+      <button class="btn primary" id="saveTripBtn">保存</button>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="hero">🗺️ 旅程</div>
+
+    <div id="schedule"></div>
+
+    <button class="btn" id="addScheduleBtn">＋ 予定を追加</button>
+
+  </div>
+
+</section>
+
+<section id="history" class="page">
+
+  <div class="card">
+
+    <div class="hero">📚 旅行履歴</div>
+
+    <div id="historyList"></div>
+
+  </div>
+
+</section>
+
+<section id="packing" class="page">
+
+  <div class="card">
+
+    <div class="hero">🧳 持ち物</div>
+
+    <div class="small">
+
+      基本項目を最初から残しています。必要に応じて追加・削除できます。
+
+    </div>
+
+    <div class="row" style="margin-top:10px">
 
       <input
 
-        id="packInput"
+        id="packNew"
 
-        placeholder="持ち物を入力"
+        placeholder="例：カメラ"
+
+        style="margin:0"
 
       >
 
-      <button id="addPackBtn">
+      <button class="btn primary" id="addPackBtn">
 
-        追加
+        ＋追加
 
       </button>
 
     </div>
 
-    <div id="packList"></div>
+    <div class="row">
+
+      <select id="packCategory" style="margin:5px 0">
+
+        <option>基本</option>
+
+        <option>衣類</option>
+
+        <option>キャンプ</option>
+
+        <option>電子機器</option>
+
+        <option>洗面・衛生</option>
+
+        <option>その他</option>
+
+      </select>
+
+    </div>
+
+    <progress
+
+      id="packProgress"
+
+      value="0"
+
+      max="100"
+
+    ></progress>
+
+    <div id="packText" class="small"></div>
+
+    <br>
+
+    <div class="grid">
+
+      <button class="btn" id="restorePackBtn">
+
+        ↩️ 基本項目を復元
+
+      </button>
+
+      <button class="btn danger" id="clearPackBtn">
+
+        持ち物を全削除
+
+      </button>
+
+    </div>
 
   </div>
-
-</section>
-
-<section id="discoverView" class="hidden">
 
   <div class="card">
 
-    <h2>発見</h2>
-
-    <textarea
-
-      id="discoverInput"
-
-      placeholder="旅先で見つけたこと、気づいたこと"
-
-    ></textarea>
-
-    <div class="actions">
-
-      <button id="addDiscoverBtn">
-
-        保存
-
-      </button>
-
-    </div>
-
-    <div id="discoverList"></div>
+    <ul id="packList"></ul>
 
   </div>
 
 </section>
 
-<section id="memoryView" class="hidden">
+<section id="discover" class="page">
 
   <div class="card">
 
-    <h2>思い出</h2>
+    <div class="hero">🔎 旅先を探す</div>
 
-    <textarea
+    <input
 
-      id="memoryInput"
+      id="search"
 
-      placeholder="印象に残ったこと、感想"
+      placeholder="蕎麦、温泉、カヤックなど"
 
-    ></textarea>
+    >
 
-    <div class="actions">
+    <div>
 
-      <button id="addMemoryBtn">
+      <span class="pill" data-search="食事">食事</span>
 
-        保存
+      <span class="pill" data-search="温泉">温泉</span>
 
-      </button>
+      <span class="pill" data-search="観光">観光</span>
+
+      <span class="pill" data-search="アクティビティ">アクティビティ</span>
+
+      <span class="pill" data-search="カフェ">カフェ</span>
+
+      <span class="pill" data-search="道の駅">道の駅</span>
 
     </div>
 
-    <div id="memoryList"></div>
+    <br>
+
+    <button class="btn primary" id="searchPlacesBtn">
+
+      🔎 検索
+
+    </button>
+
+  </div>
+
+  <div class="card" id="results"></div>
+
+  <div class="card">
+
+    <div class="hero">⭐ 行きたい</div>
+
+    <div id="saved"></div>
 
   </div>
 
 </section>
 
-</main>
+<section id="memory" class="page">
+
+  <div class="card">
+
+    <div class="hero">📸 思い出</div>
+
+    <input
+
+      id="media"
+
+      type="file"
+
+      accept="image/*,video/*"
+
+      multiple
+
+    >
+
+    <p class="small">
+
+      写真・動画はこの画面で選択して確認できます。
+
+    </p>
+
+    <div id="mediaPreview" class="media-grid"></div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="hero">📍 訪問記録</div>
+
+    <button class="btn primary" id="visitBtn">
+
+      現在地を記録
+
+    </button>
+
+    <div id="visits"></div>
+
+  </div>
+
+  <div class="card video-panel">
+
+    <div class="hero">🎬 動画作成モード</div>
+
+    <p class="small">
+
+      選んだ写真・動画を順番にプレビューできます。
+
+    </p>
+
+    <input
+
+      id="videoTitle"
+
+      placeholder="動画タイトル（例：河口湖の思い出）"
+
+    >
+
+    <div class="grid">
+
+      <button class="btn primary" id="startVideoModeBtn">
+
+        ▶️ プレビュー開始
+
+      </button>
+
+      <button class="btn" id="clearMediaBtn">
+
+        素材をクリア
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+</div>
 
 <nav>
 
-<button data-view="homeView" class="active">
+  <button class="active" data-page="home">🏠<br>ホーム</button>
 
-  <span>⌂</span>
+  <button data-page="trip">🗓️<br>旅行</button>
 
-  ホーム
+  <button data-page="packing">🧳<br>荷物</button>
 
-</button>
+  <button data-page="discover">🔎<br>発見</button>
 
-<button data-view="tripView">
-
-  <span>✈</span>
-
-  旅行
-
-</button>
-
-<button data-view="packView">
-
-  <span>▣</span>
-
-  荷物
-
-</button>
-
-<button data-view="discoverView">
-
-  <span>✧</span>
-
-  発見
-
-</button>
-
-<button data-view="memoryView">
-
-  <span>★</span>
-
-  思い出
-
-</button>
+  <button data-page="memory">📸<br>思い出</button>
 
 </nav>
 
-<div
+<div id="slideshow">
 
-  id="modal"
+  <button id="slideClose">
 
-  class="modal hidden"
+    ✕ 閉じる
 
-  aria-hidden="true"
+  </button>
 
->
+  <div id="slideCaption"></div>
 
-<div class="modalBox">
-
-<h2 id="modalTitle">
-
-  新規旅行
-
-</h2>
-
-<label>旅行名</label>
-
-<input
-
-  id="modalTripName"
-
-  placeholder="旅行名"
-
->
-
-<div class="row">
-
-<div>
-
-<label>開始日</label>
-
-<input id="modalStart" type="date">
-
-</div>
-
-<div>
-
-<label>終了日</label>
-
-<input id="modalEnd" type="date">
-
-</div>
-
-</div>
-
-<div class="actions">
-
-<button id="createTripBtn">
-
-  作成
-
-</button>
-
-<button
-
-  id="closeModalBtn"
-
-  class="secondary"
-
->
-
-  閉じる
-
-</button>
-
-</div>
-
-<div
-
-  id="historyList"
-
-  class="hidden"
-
-></div>
-
-</div>
+  <div id="slideContainer"></div>
 
 </div>
 
@@ -662,108 +928,978 @@ nav span{
 
 'use strict';
 
-const STORAGE_KEY = 'tabi-log-v21';
+const K='tabiLogV22';
 
-const defaults = {
+const DEFAULT_PACK=[
 
-  trips: [],
+  {
 
-  activeTripId: null,
+    name:'テント',
 
-  pack: [],
+    category:'キャンプ',
 
-  discoveries: [],
+    done:false
 
-  memories: []
+  },
 
-};
+  {
 
-function load(){
+    name:'寝袋',
+
+    category:'キャンプ',
+
+    done:false
+
+  },
+
+  {
+
+    name:'マット',
+
+    category:'キャンプ',
+
+    done:false
+
+  },
+
+  {
+
+    name:'ランタン',
+
+    category:'キャンプ',
+
+    done:false
+
+  },
+
+  {
+
+    name:'焚き火用品',
+
+    category:'キャンプ',
+
+    done:false
+
+  },
+
+  {
+
+    name:'チェア',
+
+    category:'キャンプ',
+
+    done:false
+
+  },
+
+  {
+
+    name:'クーラーボックス',
+
+    category:'キャンプ',
+
+    done:false
+
+  },
+
+  {
+
+    name:'着替え',
+
+    category:'衣類',
+
+    done:false
+
+  },
+
+  {
+
+    name:'タオル',
+
+    category:'基本',
+
+    done:false
+
+  },
+
+  {
+
+    name:'雨具',
+
+    category:'基本',
+
+    done:false
+
+  },
+
+  {
+
+    name:'虫よけ',
+
+    category:'基本',
+
+    done:false
+
+  },
+
+  {
+
+    name:'充電器',
+
+    category:'電子機器',
+
+    done:false
+
+  },
+
+  {
+
+    name:'モバイルバッテリー',
+
+    category:'電子機器',
+
+    done:false
+
+  }
+
+];
+
+function cloneDefaults(){
+
+  return DEFAULT_PACK.map(
+
+    x => ({...x})
+
+  );
+
+}
+
+function loadDB(){
 
   try{
 
-    const raw =
+    const p =
 
-      localStorage.getItem(STORAGE_KEY);
+      JSON.parse(
 
-    if(!raw){
+        localStorage.getItem(K)
 
-      return JSON.parse(
-
-        JSON.stringify(defaults)
+        || 'null'
 
       );
 
-    }
+    if(!p){
 
-    const parsed = JSON.parse(raw);
+      return {
+
+        trips:[],
+
+        currentId:null,
+
+        pack:cloneDefaults(),
+
+        saved:[],
+
+        schedule:[],
+
+        visits:[]
+
+      };
+
+    }
 
     return {
 
       trips:
 
-        Array.isArray(parsed.trips)
+        Array.isArray(p.trips)
 
-          ? parsed.trips : [],
+          ? p.trips
 
-      activeTripId:
+          : [],
 
-        parsed.activeTripId || null,
+      currentId:
+
+        p.currentId || null,
 
       pack:
 
-        Array.isArray(parsed.pack)
+        Array.isArray(p.pack)
 
-          ? parsed.pack : [],
+          ? p.pack
 
-      discoveries:
+          : cloneDefaults(),
 
-        Array.isArray(parsed.discoveries)
+      saved:
 
-          ? parsed.discoveries : [],
+        Array.isArray(p.saved)
 
-      memories:
+          ? p.saved
 
-        Array.isArray(parsed.memories)
+          : [],
 
-          ? parsed.memories : []
+      schedule:
+
+        Array.isArray(p.schedule)
+
+          ? p.schedule
+
+          : [],
+
+      visits:
+
+        Array.isArray(p.visits)
+
+          ? p.visits
+
+          : []
 
     };
 
   }catch(e){
 
-    return JSON.parse(
+    return {
 
-      JSON.stringify(defaults)
+      trips:[],
 
-    );
+      currentId:null,
+
+      pack:cloneDefaults(),
+
+      saved:[],
+
+      schedule:[],
+
+      visits:[]
+
+    };
 
   }
 
 }
 
-let db = load();
+let db=loadDB();
 
-function save(){
+let currentId=
+
+  db.currentId || null;
+
+let mediaItems=[];
+
+const $=
+
+  id => document.getElementById(id);
+
+const save=()=>{
 
   localStorage.setItem(
 
-    STORAGE_KEY,
+    K,
 
     JSON.stringify(db)
 
   );
 
+};
+
+const currentTrip=()=>{
+
+  return db.trips.find(
+
+    x => x.id === currentId
+
+  );
+
+};
+function show(id,button){
+
+  document
+
+    .querySelectorAll('.page')
+
+    .forEach(
+
+      x => x.classList.remove('active')
+
+    );
+
+  $(id).classList.add('active');
+
+  if(button){
+
+    document
+
+      .querySelectorAll('nav button')
+
+      .forEach(
+
+        x => x.classList.remove('active')
+
+      );
+
+    button.classList.add('active');
+
+  }
+
   render();
 
 }
-function esc(s){
 
-  return String(s ?? '').replace(
+function navButton(page){
+
+  return document.querySelector(
+
+    `nav button[data-page="${page}"]`
+
+  );
+
+}
+
+function goHome(){
+
+  show(
+
+    'home',
+
+    navButton('home')
+
+  );
+
+}
+
+function newTrip(){
+
+  currentId=null;
+
+  [
+
+    'name',
+
+    'dest',
+
+    'start',
+
+    'end',
+
+    'lodging',
+
+    'nap',
+
+    'memo'
+
+  ].forEach(
+
+    id => $(id).value=''
+
+  );
+
+  db.schedule=[];
+
+  save();
+
+  show(
+
+    'trip',
+
+    navButton('trip')
+
+  );
+
+}
+
+function saveTrip(){
+
+  const t={
+
+    id:
+
+      currentId
+
+      || Date.now().toString(),
+
+    name:
+
+      $('name').value.trim()
+
+      || '名称未設定の旅行',
+
+    destination:
+
+      $('dest').value.trim(),
+
+    start:
+
+      $('start').value,
+
+    end:
+
+      $('end').value,
+
+    lodging:
+
+      $('lodging').value.trim(),
+
+    nap:
+
+      $('nap').value.trim(),
+
+    memo:
+
+      $('memo').value.trim()
+
+  };
+
+  const old=
+
+    db.trips.findIndex(
+
+      x => x.id === t.id
+
+    );
+
+  if(old>=0){
+
+    db.trips[old]=t;
+
+  }else{
+
+    db.trips.unshift(t);
+
+  }
+
+  currentId=t.id;
+
+  db.currentId=currentId;
+
+  save();
+
+  render();
+
+  alert('旅行を保存しました');
+
+}
+
+function openTrip(id){
+
+  const t=
+
+    db.trips.find(
+
+      x => x.id === id
+
+    );
+
+  if(!t)return;
+
+  currentId=id;
+
+  db.currentId=id;
+
+  save();
+
+  $('name').value=
+
+    t.name || '';
+
+  $('dest').value=
+
+    t.destination || '';
+
+  $('start').value=
+
+    t.start || '';
+
+  $('end').value=
+
+    t.end || '';
+
+  $('lodging').value=
+
+    t.lodging || '';
+
+  $('nap').value=
+
+    t.nap || '';
+
+  $('memo').value=
+
+    t.memo || '';
+
+  show(
+
+    'trip',
+
+    navButton('trip')
+
+  );
+
+}
+
+function deleteTrip(id){
+
+  if(
+
+    !confirm(
+
+      'この旅行を履歴から削除しますか？'
+
+    )
+
+  ){
+
+    return;
+
+  }
+
+  db.trips=
+
+    db.trips.filter(
+
+      x => x.id !== id
+
+    );
+
+  if(currentId===id){
+
+    currentId=null;
+
+    db.currentId=null;
+
+  }
+
+  save();
+
+  render();
+
+}
+
+function showHistory(){
+
+  show(
+
+    'history',
+
+    null
+
+  );
+
+}
+
+function addPack(){
+
+  const n=
+
+    $('packNew').value.trim();
+
+  if(!n)return;
+
+  if(
+
+    db.pack.some(
+
+      x => x.name===n
+
+    )
+
+  ){
+
+    alert(
+
+      '同じ持ち物がすでにあります'
+
+    );
+
+    return;
+
+  }
+
+  db.pack.push({
+
+    name:n,
+
+    category:
+
+      $('packCategory').value,
+
+    done:false
+
+  });
+
+  $('packNew').value='';
+
+  save();
+
+  render();
+
+}
+
+function deletePack(i){
+
+  db.pack.splice(i,1);
+
+  save();
+
+  render();
+
+}
+
+function togglePack(i){
+
+  if(db.pack[i]){
+
+    db.pack[i].done=
+
+      !db.pack[i].done;
+
+    save();
+
+    render();
+
+  }
+
+}
+
+function restorePack(){
+
+  DEFAULT_PACK.forEach(
+
+    item=>{
+
+      if(
+
+        !db.pack.some(
+
+          x => x.name===item.name
+
+        )
+
+      ){
+
+        db.pack.push(
+
+          {...item}
+
+        );
+
+      }
+
+    }
+
+  );
+
+  save();
+
+  render();
+
+}
+
+function clearPack(){
+
+  if(!db.pack.length)return;
+
+  if(
+
+    confirm(
+
+      '持ち物をすべて削除しますか？'
+
+    )
+
+  ){
+
+    db.pack=[];
+
+    save();
+
+    render();
+
+  }
+
+}
+
+function addSchedule(){
+
+  const title=
+
+    prompt('予定名');
+
+  if(!title)return;
+
+  const date=
+
+    prompt(
+
+      '日時（例：8/15 12:00）'
+
+    ) || '';
+
+  const place=
+
+    prompt('場所') || '';
+
+  db.schedule.push({
+
+    title,
+
+    date,
+
+    place
+
+  });
+
+  save();
+
+  render();
+
+}
+
+function setSearch(x){
+
+  $('search').value=x;
+
+}
+
+function quickSearch(x){
+
+  $('search').value=x;
+
+  show(
+
+    'discover',
+
+    navButton('discover')
+
+  );
+
+  searchPlaces();
+
+}
+
+function searchPlaces(){
+
+  const q=
+
+    $('search').value
+
+    || '観光';
+
+  const d=
+
+    currentTrip()?.destination
+
+    || '';
+
+  const url=
+
+    'https://www.google.com/maps/search/?api=1&query='
+
+    + encodeURIComponent(
+
+        q+' '+d
+
+      );
+
+  $('results').innerHTML=
+
+    `
+
+    <div class="hero">
+
+      📍 ${escapeHtml(q)}
+
+    </div>
+
+    <p class="small">
+
+      「${escapeHtml(
+
+        d || '旅先'
+
+      )}」周辺を地図で検索します。
+
+    </p>
+
+    <a
+
+      class="btn primary"
+
+      style="display:inline-block;text-decoration:none"
+
+      target="_blank"
+
+      rel="noopener"
+
+      href="${url}"
+
+    >
+
+      地図で見る
+
+    </a>
+
+    `;
+
+}
+
+function visit(){
+
+  if(
+
+    !navigator.geolocation
+
+  ){
+
+    alert(
+
+      '位置情報に対応していません'
+
+    );
+
+    return;
+
+  }
+
+  navigator
+
+    .geolocation
+
+    .getCurrentPosition(
+
+      p=>{
+
+        db.visits.unshift({
+
+          name:
+
+            currentTrip()
+
+              ?.destination
+
+            || '現在地',
+
+          time:
+
+            new Date()
+
+              .toLocaleString(
+
+                'ja-JP'
+
+              ),
+
+          lat:
+
+            p.coords.latitude,
+
+          lon:
+
+            p.coords.longitude
+
+        });
+
+        save();
+
+        render();
+
+      },
+
+      ()=>{
+
+        alert(
+
+          '位置情報を許可してください'
+
+        );
+
+      }
+
+    );
+
+}
+
+async function weather(){
+
+  if(
+
+    !navigator.geolocation
+
+  ){
+
+    alert(
+
+      '位置情報に対応していません'
+
+    );
+
+    return;
+
+  }
+
+  navigator
+
+    .geolocation
+
+    .getCurrentPosition(
+
+      async p=>{
+
+        try{
+
+          const u=
+
+            `https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,weather_code&timezone=auto`;
+
+          const j=
+
+            await (
+
+              await fetch(u)
+
+            ).json();
+
+          $('weatherBox')
+
+            .textContent=
+
+            `現在 ${j.current.temperature_2m}℃　天気コード ${j.current.weather_code}`;
+
+        }catch(e){
+
+          $('weatherBox')
+
+            .textContent=
+
+            '天気を取得できませんでした';
+
+        }
+
+      },
+
+      ()=>{
+
+        alert(
+
+          '位置情報を許可してください'
+
+        );
+
+      }
+
+    );
+
+}
+
+function escapeHtml(s){
+
+  return String(
+
+    s ?? ''
+
+  ).replace(
 
     /[&<>"']/g,
 
-    c => ({
+    c=>({
 
       '&':'&amp;',
 
@@ -781,809 +1917,1081 @@ function esc(s){
 
 }
 
-function activeTrip(){
+function handleMedia(files){
 
-  return db.trips.find(
+  mediaItems.forEach(
 
-    t => t.id === db.activeTripId
+    x=>URL.revokeObjectURL(
 
-  ) || null;
+      x.url
+
+    )
+
+  );
+
+  mediaItems=
+
+    [...files].map(
+
+      file=>({
+
+        file,
+
+        url:
+
+          URL.createObjectURL(
+
+            file
+
+          ),
+
+        type:
+
+          file.type
+
+      })
+
+    );
+
+  renderMedia();
 
 }
 
-function showView(id){
+function renderMedia(){
 
-  [
+  $('mediaPreview')
 
-    'homeView',
+    .innerHTML=
 
-    'tripView',
+    mediaItems.length
 
-    'packView',
+    ? mediaItems.map(
 
-    'discoverView',
+        (x,i)=>{
 
-    'memoryView'
+          const media=
 
-  ].forEach(v => {
+            x.type.startsWith(
 
-    document
+              'video/'
 
-      .getElementById(v)
+            )
 
-      .classList
+            ? `
 
-      .toggle('hidden', v !== id);
+              <video
 
-  });
+                src="${x.url}"
 
-  document
+                controls
 
-    .querySelectorAll('nav button')
+                playsinline
 
-    .forEach(b => {
+              ></video>
 
-      b.classList.toggle(
+              `
 
-        'active',
+            : `
 
-        b.dataset.view === id
+              <img
+
+                src="${x.url}"
+
+                alt=""
+
+              >
+
+              `;
+
+          return `
+
+            <div class="media-card">
+
+              ${media}
+
+              <div class="media-name">
+
+                ${i+1}.
+
+                ${escapeHtml(
+
+                  x.file.name
+
+                )}
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+
+      ).join('')
+
+    : '';
+
+}
+
+function clearMedia(){
+
+  mediaItems.forEach(
+
+    x=>URL.revokeObjectURL(
+
+      x.url
+
+    )
+
+  );
+
+  mediaItems=[];
+
+  $('media').value='';
+
+  renderMedia();
+
+}
+
+function startVideoMode(){
+
+  if(
+
+    !mediaItems.length
+
+  ){
+
+    alert(
+
+      '先に写真または動画を選択してください'
+
+    );
+
+    return;
+
+  }
+
+  let i=0;
+
+  $('slideshow')
+
+    .classList
+
+    .add('active');
+
+  $('slideCaption')
+
+    .textContent=
+
+    $('videoTitle')
+
+      .value
+
+      .trim()
+
+    || '旅の思い出';
+
+  const container=
+
+    $('slideContainer');
+
+  function showOne(){
+
+    if(
+
+      !$('slideshow')
+
+        .classList
+
+        .contains('active')
+
+    ){
+
+      return;
+
+    }
+
+    const x=
+
+      mediaItems[i];
+
+    container.innerHTML=
+
+      x.type.startsWith(
+
+        'video/'
+
+      )
+
+      ? `
+
+        <video
+
+          id="slideMedia"
+
+          src="${x.url}"
+
+          controls
+
+          autoplay
+
+          playsinline
+
+        ></video>
+
+        `
+
+      : `
+
+        <img
+
+          id="slideMedia"
+
+          src="${x.url}"
+
+          alt=""
+
+        >
+
+        `;
+
+    if(
+
+      !x.type.startsWith(
+
+        'video/'
+
+      )
+
+    ){
+
+      setTimeout(
+
+        ()=>{
+
+          if(
+
+            $('slideshow')
+
+              .classList
+
+              .contains('active')
+
+          ){
+
+            i=
+
+              (i+1)
+
+              % mediaItems.length;
+
+            showOne();
+
+          }
+
+        },
+
+        2500
 
       );
 
-    });
+    }else{
 
-  render();
+      const v=
+
+        container
+
+          .querySelector(
+
+            'video'
+
+          );
+
+      v.onended=()=>{
+
+        i=
+
+          (i+1)
+
+          % mediaItems.length;
+
+        showOne();
+
+      };
+
+    }
+
+  }
+
+  showOne();
+
+}
+
+function stopVideoMode(){
+
+  $('slideshow')
+
+    .classList
+
+    .remove('active');
+
+  $('slideContainer')
+
+    .innerHTML='';
 
 }
 
 function render(){
 
-  const trip = activeTrip();
+  const t=
 
-  const current =
+    currentTrip();
 
-    document.getElementById('currentTrip');
+  $('homeSummary')
 
-  current.innerHTML = trip
+    .innerHTML=
 
-    ? `<strong>${esc(
+    t
 
-        trip.name || '名称未設定'
+    ? `
 
-      )}</strong>
+      <div class="hero">
 
-      <div class="small">
+        📌 ${escapeHtml(
 
-        ${esc(trip.start || '')}
+          t.name
 
-        ${trip.end
-
-          ? ' ～ ' + esc(trip.end)
-
-          : ''}
+        )}
 
       </div>
 
       <div class="small">
 
-        ${esc(trip.memo || '')}
+        ${escapeHtml(
 
-      </div>`
+          t.destination || ''
 
-    : `<div class="empty">
+        )}
 
-        現在の旅行はありません。
+        　
 
-      </div>`;
+        ${escapeHtml(
 
-  document.getElementById(
+          t.start || ''
 
-    'tripName'
+        )}
 
-  ).value = trip?.name || '';
+         ～
 
-  document.getElementById(
+        ${escapeHtml(
 
-    'startDate'
+          t.end || ''
 
-  ).value = trip?.start || '';
+        )}
 
-  document.getElementById(
+      </div>
 
-    'endDate'
+      <br>
 
-  ).value = trip?.end || '';
+      <button
 
-  document.getElementById(
+        class="btn primary"
 
-    'tripMemo'
+        data-open-trip="${t.id}"
 
-  ).value = trip?.memo || '';
+      >
 
-  document.getElementById(
+        この旅行を開く
 
-    'packList'
+      </button>
 
-  ).innerHTML = db.pack.length
+      `
 
-    ? db.pack.map(
+    : `
 
-        (x,i) => `
+      <div class="hero">
 
-        <div class="item">
+        まだ旅行が登録されていません
 
-        <label>
+      </div>
 
-        <input
+      <div class="small">
 
-          type="checkbox"
+        「新規旅行」から旅行を登録してください。
 
-          data-pack-check="${i}"
+      </div>
 
-          ${x.done ? 'checked' : ''}
+      `;
 
-        >
+  $('historyList')
 
-        ${esc(x.text)}
+    .innerHTML=
 
-        </label>
-
-        <button
-
-          class="secondary"
-
-          data-pack-del="${i}"
-
-        >
-
-        削除
-
-        </button>
-
-        </div>`
-
-      ).join('')
-
-    : `<div class="empty">
-
-        荷物はまだありません。
-
-      </div>`;
-
-  document.getElementById(
-
-    'discoverList'
-
-  ).innerHTML =
-
-    db.discoveries.length
-
-    ? db.discoveries.map(
-
-        (x,i) => `
-
-        <div class="item">
-
-        ${esc(x)}
-
-        <button
-
-          class="secondary"
-
-          data-discover-del="${i}"
-
-        >
-
-        削除
-
-        </button>
-
-        </div>`
-
-      ).join('')
-
-    : `<div class="empty">
-
-        発見はまだありません。
-
-      </div>`;
-
-  document.getElementById(
-
-    'memoryList'
-
-  ).innerHTML =
-
-    db.memories.length
-
-    ? db.memories.map(
-
-        (x,i) => `
-
-        <div class="item">
-
-        ${esc(x)}
-
-        <button
-
-          class="secondary"
-
-          data-memory-del="${i}"
-
-        >
-
-        削除
-
-        </button>
-
-        </div>`
-
-      ).join('')
-
-    : `<div class="empty">
-
-        思い出はまだありません。
-
-      </div>`;
-
-  bindDynamic();
-
-}
-
-function bindDynamic(){
-
-  document
-
-    .querySelectorAll(
-
-      '[data-pack-check]'
-
-    )
-
-    .forEach(el => {
-
-      el.onchange = () => {
-
-        const i =
-
-          Number(el.dataset.packCheck);
-
-        if(db.pack[i]){
-
-          db.pack[i].done =
-
-            el.checked;
-
-          save();
-
-        }
-
-      };
-
-    });
-
-  document
-
-    .querySelectorAll(
-
-      '[data-pack-del]'
-
-    )
-
-    .forEach(el => {
-
-      el.onclick = () => {
-
-        db.pack.splice(
-
-          Number(el.dataset.packDel),
-
-          1
-
-        );
-
-        save();
-
-      };
-
-    });
-
-  document
-
-    .querySelectorAll(
-
-      '[data-discover-del]'
-
-    )
-
-    .forEach(el => {
-
-      el.onclick = () => {
-
-        db.discoveries.splice(
-
-          Number(
-
-            el.dataset.discoverDel
-
-          ),
-
-          1
-
-        );
-
-        save();
-
-      };
-
-    });
-
-  document
-
-    .querySelectorAll(
-
-      '[data-memory-del]'
-
-    )
-
-    .forEach(el => {
-
-      el.onclick = () => {
-
-        db.memories.splice(
-
-          Number(
-
-            el.dataset.memoryDel
-
-          ),
-
-          1
-
-        );
-
-        save();
-
-      };
-
-    });
-
-}
-
-function openNewTrip(){
-
-  document.getElementById(
-
-    'modalTitle'
-
-  ).textContent = '新規旅行';
-
-  document.getElementById(
-
-    'historyList'
-
-  ).classList.add('hidden');
-
-  document.getElementById(
-
-    'modalTripName'
-
-  ).classList.remove('hidden');
-
-  document.getElementById(
-
-    'modalStart'
-
-  ).parentElement.parentElement
-
-   .classList.remove('hidden');
-
-  document.getElementById(
-
-    'createTripBtn'
-
-  ).classList.remove('hidden');
-
-  document.getElementById(
-
-    'modalTripName'
-
-  ).value = '';
-
-  document.getElementById(
-
-    'modalStart'
-
-  ).value = '';
-
-  document.getElementById(
-
-    'modalEnd'
-
-  ).value = '';
-
-  document.getElementById(
-
-    'modal'
-
-  ).classList.remove('hidden');
-
-}
-
-function openHistory(){
-
-  document.getElementById(
-
-    'modalTitle'
-
-  ).textContent = '旅行履歴';
-
-  document.getElementById(
-
-    'historyList'
-
-  ).classList.remove('hidden');
-
-  document.getElementById(
-
-    'modalTripName'
-
-  ).classList.add('hidden');
-
-  document.getElementById(
-
-    'modalStart'
-
-  ).parentElement.parentElement
-
-   .classList.add('hidden');
-
-  document.getElementById(
-
-    'createTripBtn'
-
-  ).classList.add('hidden');
-
-  document.getElementById(
-
-    'historyList'
-
-  ).innerHTML = db.trips.length
+    db.trips.length
 
     ? db.trips.map(
 
-        t => `
+        x=>`
 
-        <div class="item">
+        <div class="result history-item">
 
-        <button
+          <b
 
-          class="secondary"
+            data-open-trip="${x.id}"
 
-          data-trip-open="${esc(t.id)}"
+          >
 
-        >
+            ${escapeHtml(
 
-          ${esc(
+              x.name
 
-            t.name || '名称未設定'
+            )}
 
-          )}
+          </b>
 
-        </button>
+          <span class="small">
 
-        <div class="small">
+            ${escapeHtml(
 
-          ${esc(t.start || '')}
+              x.destination || ''
 
-          ${t.end
+            )}
 
-            ? ' ～ ' + esc(t.end)
+            　
 
-            : ''}
+            ${escapeHtml(
+
+              x.start || ''
+
+            )}
+
+             ～
+
+            ${escapeHtml(
+
+              x.end || ''
+
+            )}
+
+          </span>
+
+          <br>
+
+          <button
+
+            class="btn"
+
+            data-open-trip="${x.id}"
+
+          >
+
+            詳細
+
+          </button>
+
+          <button
+
+            class="btn danger"
+
+            data-delete-trip="${x.id}"
+
+          >
+
+            削除
+
+          </button>
 
         </div>
 
-        </div>`
+        `
 
       ).join('')
 
-    : `<div class="empty">
+    : `
 
-        旅行履歴はありません。
+      <div class="empty">
 
-      </div>`;
+        まだ旅行履歴がありません。
 
-  document.getElementById(
+      </div>
 
-    'modal'
+      `;
 
-  ).classList.remove('hidden');
+  if(t){
+
+    $('name').value=
+
+      t.name || '';
+
+    $('dest').value=
+
+      t.destination || '';
+
+    $('start').value=
+
+      t.start || '';
+
+    $('end').value=
+
+      t.end || '';
+
+    $('lodging').value=
+
+      t.lodging || '';
+
+    $('nap').value=
+
+      t.nap || '';
+
+    $('memo').value=
+
+      t.memo || '';
+
+  }
+
+  const done=
+
+    db.pack.filter(
+
+      x=>x.done
+
+    ).length;
+
+  const p=
+
+    db.pack.length
+
+    ? Math.round(
+
+        done
+
+        / db.pack.length
+
+        * 100
+
+      )
+
+    : 0;
+
+  $('packProgress')
+
+    .value=p;
+
+  $('packText')
+
+    .textContent=
+
+    `${done} / ${db.pack.length} 完了（${p}%）`;
+
+  $('packList')
+
+    .innerHTML=
+
+    db.pack.length
+
+    ? db.pack.map(
+
+        (x,i)=>`
+
+        <li class="pack-item">
+
+          <input
+
+            type="checkbox"
+
+            data-pack-toggle="${i}"
+
+            ${x.done ? 'checked' : ''}
+
+          >
+
+          <span class="pack-name">
+
+            ${escapeHtml(
+
+              x.name
+
+            )}
+
+            <br>
+
+            <span class="category">
+
+              ${escapeHtml(
+
+                x.category || '基本'
+
+              )}
+
+            </span>
+
+          </span>
+
+          <button
+
+            class="btn danger"
+
+            data-pack-delete="${i}"
+
+          >
+
+            削除
+
+          </button>
+
+        </li>
+
+        `
+
+      ).join('')
+
+    : `
+
+      <div class="empty">
+
+        持ち物がありません。
+
+        「基本項目を復元」または
+
+        「＋追加」を使ってください。
+
+      </div>
+
+      `;
+
+  $('schedule')
+
+    .innerHTML=
+
+    db.schedule.length
+
+    ? db.schedule.map(
+
+        x=>`
+
+        <div class="result">
+
+          <b>
+
+            ${escapeHtml(
+
+              x.title
+
+            )}
+
+          </b>
+
+          <span class="small">
+
+            ${escapeHtml(
+
+              x.date || ''
+
+            )}
+
+            ${escapeHtml(
+
+              x.place || ''
+
+            )}
+
+          </span>
+
+        </div>
+
+        `
+
+      ).join('')
+
+    : `
+
+      <span class="small">
+
+        まだ予定がありません。
+
+      </span>
+
+      `;
+
+  $('saved')
+
+    .innerHTML=
+
+    db.saved.length
+
+    ? db.saved.map(
+
+        x=>`
+
+        <div class="result">
+
+          <b>
+
+            ${escapeHtml(
+
+              x.name
+
+            )}
+
+          </b>
+
+        </div>
+
+        `
+
+      ).join('')
+
+    : `
+
+      <span class="small">
+
+        まだありません。
+
+      </span>
+
+      `;
+
+  $('visits')
+
+    .innerHTML=
+
+    db.visits.length
+
+    ? db.visits.map(
+
+        x=>`
+
+        <div class="result">
+
+          <b>
+
+            ${escapeHtml(
+
+              x.name
+
+            )}
+
+          </b>
+
+          <span class="small">
+
+            ${escapeHtml(
+
+              x.time
+
+            )}
+
+          </span>
+
+        </div>
+
+        `
+
+      ).join('')
+
+    : `
+
+      <span class="small">
+
+        まだ記録がありません。
+
+      </span>
+
+      `;
 
   document
 
     .querySelectorAll(
 
-      '[data-trip-open]'
+      '[data-open-trip]'
 
     )
 
-    .forEach(b => {
+    .forEach(
 
-      b.onclick = () => {
+      el=>
 
-        db.activeTripId =
+        el.onclick=
 
-          b.dataset.tripOpen;
+          ()=>openTrip(
 
-        save();
+            el.dataset.openTrip
 
-        closeModal();
+          )
 
-        showView('tripView');
+    );
 
-      };
+  document
 
-    });
+    .querySelectorAll(
+
+      '[data-delete-trip]'
+
+    )
+
+    .forEach(
+
+      el=>
+
+        el.onclick=
+
+          ()=>deleteTrip(
+
+            el.dataset.deleteTrip
+
+          )
+
+    );
+
+  document
+
+    .querySelectorAll(
+
+      '[data-pack-toggle]'
+
+    )
+
+    .forEach(
+
+      el=>
+
+        el.onchange=
+
+          ()=>togglePack(
+
+            Number(
+
+              el.dataset.packToggle
+
+            )
+
+          )
+
+    );
+
+  document
+
+    .querySelectorAll(
+
+      '[data-pack-delete]'
+
+    )
+
+    .forEach(
+
+      el=>
+
+        el.onclick=
+
+          ()=>deletePack(
+
+            Number(
+
+              el.dataset.packDelete
+
+            )
+
+          )
+
+    );
 
 }
-
-function closeModal(){
-
-  document.getElementById(
-
-    'modal'
-
-  ).classList.add('hidden');
-
-}
-
-document.getElementById(
-
-  'newTripBtn'
-
-).onclick = openNewTrip;
-
-document.getElementById(
-
-  'historyBtn'
-
-).onclick = openHistory;
-
-document.getElementById(
-
-  'closeModalBtn'
-
-).onclick = closeModal;
-
-document.getElementById(
-
-  'createTripBtn'
-
-).onclick = () => {
-
-  const id = String(Date.now());
-
-  const trip = {
-
-    id,
-
-    name:
-
-      document.getElementById(
-
-        'modalTripName'
-
-      ).value.trim()
-
-      || '新しい旅行',
-
-    start:
-
-      document.getElementById(
-
-        'modalStart'
-
-      ).value,
-
-    end:
-
-      document.getElementById(
-
-        'modalEnd'
-
-      ).value,
-
-    memo:''
-
-  };
-
-  db.trips.unshift(trip);
-
-  db.activeTripId = id;
-
-  save();
-
-  closeModal();
-
-  showView('tripView');
-
-};
-
-document.getElementById(
-
-  'saveTripBtn'
-
-).onclick = () => {
-
-  let trip = activeTrip();
-
-  if(!trip){
-
-    const id =
-
-      String(Date.now());
-
-    trip = {
-
-      id,
-
-      name:'新しい旅行',
-
-      start:'',
-
-      end:'',
-
-      memo:''
-
-    };
-
-    db.trips.unshift(trip);
-
-    db.activeTripId = id;
-
-  }
-
-  trip.name =
-
-    document.getElementById(
-
-      'tripName'
-
-    ).value.trim()
-
-    || '名称未設定';
-
-  trip.start =
-
-    document.getElementById(
-
-      'startDate'
-
-    ).value;
-
-  trip.end =
-
-    document.getElementById(
-
-      'endDate'
-
-    ).value;
-
-  trip.memo =
-
-    document.getElementById(
-
-      'tripMemo'
-
-    ).value.trim();
-
-  save();
-
-};
-
-document.getElementById(
-
-  'addPackBtn'
-
-).onclick = () => {
-
-  const el =
-
-    document.getElementById(
-
-      'packInput'
-
-    );
-
-  const text =
-
-    el.value.trim();
-
-  if(!text) return;
-
-  db.pack.push({
-
-    text,
-
-    done:false
-
-  });
-
-  el.value = '';
-
-  save();
-
-};
-
-document.getElementById(
-
-  'addDiscoverBtn'
-
-).onclick = () => {
-
-  const el =
-
-    document.getElementById(
-
-      'discoverInput'
-
-    );
-
-  const text =
-
-    el.value.trim();
-
-  if(!text) return;
-
-  db.discoveries.unshift(text);
-
-  el.value = '';
-
-  save();
-
-};
-
-document.getElementById(
-
-  'addMemoryBtn'
-
-).onclick = () => {
-
-  const el =
-
-    document.getElementById(
-
-      'memoryInput'
-
-    );
-
-  const text =
-
-    el.value.trim();
-
-  if(!text) return;
-
-  db.memories.unshift(text);
-
-  el.value = '';
-
-  save();
-
-};
 
 document
 
-  .querySelectorAll('nav button')
+  .querySelectorAll(
 
-  .forEach(b => {
+    'nav button'
 
-    b.onclick = () =>
+  )
 
-      showView(b.dataset.view);
+  .forEach(
 
-  });
+    b=>
+
+      b.onclick=
+
+        ()=>show(
+
+          b.dataset.page,
+
+          b
+
+        )
+
+  );
+
+document
+
+  .querySelectorAll(
+
+    '[data-search]'
+
+  )
+
+  .forEach(
+
+    x=>
+
+      x.onclick=
+
+        ()=>setSearch(
+
+          x.dataset.search
+
+        )
+
+  );
+
+document
+
+  .querySelectorAll(
+
+    '[data-quick]'
+
+  )
+
+  .forEach(
+
+    x=>
+
+      x.onclick=
+
+        ()=>quickSearch(
+
+          x.dataset.quick
+
+        )
+
+  );
+
+$('newTripBtn')
+
+  .onclick=
+
+  newTrip;
+
+$('historyBtn')
+
+  .onclick=
+
+  showHistory;
+
+$('goHomeBtn')
+
+  .onclick=
+
+  goHome;
+
+$('saveTripBtn')
+
+  .onclick=
+
+  saveTrip;
+
+$('addScheduleBtn')
+
+  .onclick=
+
+  addSchedule;
+
+$('addPackBtn')
+
+  .onclick=
+
+  addPack;
+
+$('restorePackBtn')
+
+  .onclick=
+
+  restorePack;
+
+$('clearPackBtn')
+
+  .onclick=
+
+  clearPack;
+
+$('searchPlacesBtn')
+
+  .onclick=
+
+  searchPlaces;
+
+$('visitBtn')
+
+  .onclick=
+
+  visit;
+
+$('weatherBtn')
+
+  .onclick=
+
+  weather;
+
+$('media')
+
+  .onchange=
+
+  e=>handleMedia(
+
+    e.target.files
+
+  );
+
+$('clearMediaBtn')
+
+  .onclick=
+
+  clearMedia;
+
+$('startVideoModeBtn')
+
+  .onclick=
+
+  startVideoMode;
+
+$('slideClose')
+
+  .onclick=
+
+  stopVideoMode;
+
+if(
+
+  'serviceWorker'
+
+  in navigator
+
+){
+
+  window
+
+    .addEventListener(
+
+      'load',
+
+      ()=>navigator
+
+        .serviceWorker
+
+        .register(
+
+          'sw.js'
+
+        )
+
+        .catch(
+
+          ()=>{}
+
+        )
+
+    );
+
+}
 
 render();
 
