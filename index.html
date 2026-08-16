@@ -1,178 +1,1596 @@
 <!doctype html>
+
 <html lang="ja">
+
 <head>
+
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0877c9">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="旅ログ">
-<link rel="manifest" href="manifest.webmanifest">
-<title>🏕️ 旅ログ v2.0</title>
+
+<meta name="theme-color" content="#111111">
+
+<title>旅ログ v2.1 ポップ版</title>
+
 <style>
-:root{--blue:#0877c9;--light:#eef8ff;--ink:#17324d;--muted:#6d8193}
+
+:root{
+
+  --bg:#f4f4f4;
+
+  --card:#ffffff;
+
+  --text:#1f1f1f;
+
+  --sub:#777;
+
+  --line:#e5e5e5;
+
+}
+
 *{box-sizing:border-box}
-body{margin:0;background:#f6fbff;color:var(--ink);font-family:Meiryo,"メイリオ",-apple-system,BlinkMacSystemFont,sans-serif}
-header{background:linear-gradient(135deg,#0877c9,#25a5ef);color:#fff;padding:28px 18px 20px;border-radius:0 0 24px 24px;box-shadow:0 5px 18px #0877c933}
-h1{margin:0;font-size:30px}.sub{opacity:.9;margin-top:5px}.wrap{max-width:720px;margin:auto;padding-bottom:92px}
-.card{background:#fff;border-radius:18px;padding:16px;margin:14px;box-shadow:0 3px 15px #0877c91a}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn{border:0;border-radius:14px;padding:13px;background:var(--light);color:#075c99;font-weight:700;font-size:15px}
-.primary{background:var(--blue);color:#fff}.danger{background:#fff0f0;color:#c33}
-input,textarea,select{width:100%;border:1px solid #d5e6f2;border-radius:12px;padding:12px;margin:5px 0 9px;font-size:16px;background:#fbfdff;font-family:inherit}
-textarea{min-height:80px}
-.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.small{font-size:13px;color:var(--muted)}.pill{display:inline-block;background:#e7f5ff;color:#08649e;border-radius:20px;padding:6px 10px;margin:3px;font-size:13px}
-progress{width:100%;height:12px;accent-color:var(--blue)}
-ul{padding:0;margin:0;list-style:none}li{padding:10px 0;border-bottom:1px solid #edf2f6}
-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #dceaf3;display:flex;justify-content:space-around;padding:8px env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom)) env(safe-area-inset-left);z-index:5}
-nav button{background:none;border:0;color:#698195;font-size:12px;padding:4px 9px}nav button.active{color:var(--blue);font-weight:800}
-.page{display:none}.page.active{display:block}.hero{font-size:20px;font-weight:800}.result{padding:12px 0;border-bottom:1px solid #e6eff5}.result b{display:block}.tag{font-size:12px;color:#0877c9}
-.home-choice{padding:20px 14px}.choice{min-height:110px;font-size:18px}.choice span{display:block;font-size:13px;margin-top:6px;color:var(--muted);font-weight:400}
-.pack-item{display:flex;align-items:center;gap:10px}.pack-item input[type=checkbox]{width:auto;margin:0}.pack-name{flex:1}.category{font-size:12px;color:#0877c9}
-.history-item{cursor:pointer}.history-item b{font-size:17px}.empty{text-align:center;padding:20px;color:var(--muted)}
+
+body{
+
+  margin:0;
+
+  font-family:
+
+    "Hiragino Maru Gothic ProN",
+
+    "Hiragino Maru Gothic Pro",
+
+    "Yu Gothic",
+
+    "Meiryo",
+
+    sans-serif;
+
+  background:var(--bg);
+
+  color:var(--text);
+
+}
+
+header{
+
+  background:#111;
+
+  color:#fff;
+
+  padding:18px 16px 14px;
+
+  position:sticky;
+
+  top:0;
+
+  z-index:10;
+
+}
+
+header h1{
+
+  margin:0;
+
+  font-size:24px;
+
+  font-weight:800;
+
+  letter-spacing:.04em;
+
+}
+
+header .sub{
+
+  font-size:12px;
+
+  opacity:.8;
+
+  margin-top:3px;
+
+}
+
+main{
+
+  max-width:820px;
+
+  margin:0 auto;
+
+  padding:14px 14px 90px;
+
+}
+
+.card{
+
+  background:var(--card);
+
+  border-radius:18px;
+
+  padding:16px;
+
+  margin:0 0 14px;
+
+  box-shadow:0 1px 5px rgba(0,0,0,.08);
+
+}
+
+h2{
+
+  font-size:19px;
+
+  margin:0 0 12px;
+
+  font-weight:800;
+
+  letter-spacing:.02em;
+
+}
+
+label{
+
+  font-size:13px;
+
+  color:var(--sub);
+
+  display:block;
+
+  margin:8px 0 5px;
+
+}
+
+input,textarea,select{
+
+  width:100%;
+
+  font:inherit;
+
+  padding:11px 12px;
+
+  border:1px solid #ccc;
+
+  border-radius:14px;
+
+  background:#fff;
+
+}
+
+textarea{
+
+  min-height:92px;
+
+  resize:vertical;
+
+}
+
+button{
+
+  font:inherit;
+
+  font-weight:700;
+
+  border:0;
+
+  border-radius:14px;
+
+  padding:11px 14px;
+
+  background:#111;
+
+  color:#fff;
+
+}
+
+button.secondary{
+
+  background:#e9e9e9;
+
+  color:#111;
+
+}
+
+.row{
+
+  display:flex;
+
+  gap:8px;
+
+  align-items:center;
+
+}
+
+.row>*{flex:1}
+
+.actions{
+
+  display:flex;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+
+  margin-top:10px;
+
+}
+
+.item{
+
+  border-top:1px solid var(--line);
+
+  padding:10px 0;
+
+}
+
+.item:first-child{border-top:0}
+
+.small{
+
+  font-size:12px;
+
+  color:var(--sub);
+
+}
+
+.empty{
+
+  font-size:13px;
+
+  color:#999;
+
+  padding:4px 0;
+
+}
+
+.hidden{
+
+  display:none!important;
+
+}
+
+nav{
+
+  position:fixed;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  background:#fff;
+
+  border-top:1px solid #ddd;
+
+  display:grid;
+
+  grid-template-columns:repeat(5,1fr);
+
+  z-index:20;
+
+  padding-bottom:env(safe-area-inset-bottom);
+
+}
+
+nav button{
+
+  border-radius:0;
+
+  background:#fff;
+
+  color:#666;
+
+  padding:10px 2px 8px;
+
+  font-size:12px;
+
+}
+
+nav button.active{
+
+  color:#111;
+
+  font-weight:800;
+
+}
+
+nav span{
+
+  display:block;
+
+  font-size:20px;
+
+  line-height:1;
+
+  margin-bottom:4px;
+
+}
+
+.modal{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.45);
+
+  display:flex;
+
+  align-items:flex-end;
+
+  z-index:30;
+
+}
+
+.modalBox{
+
+  background:#fff;
+
+  width:100%;
+
+  border-radius:22px 22px 0 0;
+
+  padding:18px;
+
+  max-height:85vh;
+
+  overflow:auto;
+
+}
+
 </style>
+
 </head>
+
 <body>
-<div class="wrap">
-<header><h1>🏕️ 旅ログ</h1><div class="sub">旅の前から、旅の後まで。</div></header>
 
-<section id="home" class="page active">
-<div class="home-choice">
-<div class="grid">
-<button class="btn primary choice" onclick="newTrip()">🆕 新規旅行<span>新しい旅行を登録します</span></button>
-<button class="btn choice" onclick="showHistory()">📚 履歴<span>過去の旅行を確認します</span></button>
-</div>
-</div>
-<div class="card" id="homeSummary"></div>
-<div class="card"><div class="hero">✨ 旅先コンシェルジュ</div><div class="grid" style="margin-top:10px">
-<button class="btn" onclick="quickSearch('食事')">🍴 食事</button><button class="btn" onclick="quickSearch('日帰り温泉')">♨️ 温泉</button>
-<button class="btn" onclick="quickSearch('観光')">📸 観光</button><button class="btn" onclick="quickSearch('アクティビティ')">🛶 遊ぶ</button>
-</div></div>
-<div class="card"><div class="hero">🌦️ 天気</div><div id="weather">現在地を取得して確認できます。</div><button class="btn primary" onclick="weather()">天気を取得</button></div>
+<header>
+
+  <h1>旅ログ v2.1</h1>
+
+  <div class="sub">旅行記録・荷物・発見・思い出</div>
+
+</header>
+
+<main>
+
+<section id="homeView">
+
+  <div class="card">
+
+    <h2>旅をはじめる</h2>
+
+    <div class="actions">
+
+      <button id="newTripBtn">新規旅行</button>
+
+      <button id="historyBtn" class="secondary">
+
+        旅行履歴
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h2>現在の旅行</h2>
+
+    <div id="currentTrip"></div>
+
+  </div>
+
 </section>
 
-<section id="trip" class="page">
-<div class="card"><div class="hero">🗓️ 旅行</div>
-<input id="name" placeholder="旅行タイトル"><input id="dest" placeholder="行き先（例：河口湖）">
-<label class="small">開始日</label><input id="start" type="date"><label class="small">終了日</label><input id="end" type="date">
-<input id="lodging" placeholder="宿泊先"><input id="nap" placeholder="なっぷのURL">
-<textarea id="memo" placeholder="旅のメモ"></textarea>
-<div class="grid"><button class="btn" onclick="goHome()">戻る</button><button class="btn primary" onclick="saveTrip()">保存</button></div>
-</div>
-<div class="card"><div class="hero">🗺️ 旅程</div><div id="schedule"></div><button class="btn" onclick="addSchedule()">＋ 予定を追加</button></div>
+<section id="tripView" class="hidden">
+
+  <div class="card">
+
+    <h2>旅行</h2>
+
+    <label>旅行名</label>
+
+    <input
+
+      id="tripName"
+
+      placeholder="例：河口湖グランピング"
+
+    >
+
+    <div class="row">
+
+      <div>
+
+        <label>開始日</label>
+
+        <input id="startDate" type="date">
+
+      </div>
+
+      <div>
+
+        <label>終了日</label>
+
+        <input id="endDate" type="date">
+
+      </div>
+
+    </div>
+
+    <label>メモ</label>
+
+    <textarea
+
+      id="tripMemo"
+
+      placeholder="宿泊先、予定など"
+
+    ></textarea>
+
+    <div class="actions">
+
+      <button id="saveTripBtn">保存</button>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="history" class="page">
-<div class="card"><div class="hero">📚 旅行履歴</div><div id="historyList"></div></div>
+<section id="packView" class="hidden">
+
+  <div class="card">
+
+    <h2>荷物</h2>
+
+    <div class="row">
+
+      <input
+
+        id="packInput"
+
+        placeholder="持ち物を入力"
+
+      >
+
+      <button id="addPackBtn">
+
+        追加
+
+      </button>
+
+    </div>
+
+    <div id="packList"></div>
+
+  </div>
+
 </section>
 
-<section id="packing" class="page">
-<div class="card"><div class="hero">🧳 持ち物</div>
-<div class="small">自分で好きな持ち物を追加・削除できます。</div>
-<div class="row" style="margin-top:10px"><input id="packNew" placeholder="例：カメラ" style="margin:0"><button class="btn primary" onclick="addPack()">＋追加</button></div>
-<div class="row"><select id="packCategory" style="margin:5px 0"><option>基本</option><option>衣類</option><option>キャンプ</option><option>電子機器</option><option>洗面・衛生</option><option>その他</option></select></div>
-<progress id="packProgress" value="0" max="100"></progress><div id="packText" class="small"></div><br>
-<div class="grid"><button class="btn" onclick="campSet()">🏕️ キャンプセット</button><button class="btn danger" onclick="clearPack()">持ち物を全削除</button></div>
-</div>
-<div class="card"><ul id="packList"></ul></div>
+<section id="discoverView" class="hidden">
+
+  <div class="card">
+
+    <h2>発見</h2>
+
+    <textarea
+
+      id="discoverInput"
+
+      placeholder="旅先で見つけたこと、気づいたこと"
+
+    ></textarea>
+
+    <div class="actions">
+
+      <button id="addDiscoverBtn">
+
+        保存
+
+      </button>
+
+    </div>
+
+    <div id="discoverList"></div>
+
+  </div>
+
 </section>
 
-<section id="discover" class="page">
-<div class="card"><div class="hero">🔎 旅先を探す</div><input id="search" placeholder="蕎麦、温泉、カヤックなど"><div>
-<span class="pill" onclick="setSearch('食事')">食事</span><span class="pill" onclick="setSearch('温泉')">温泉</span><span class="pill" onclick="setSearch('観光')">観光</span><span class="pill" onclick="setSearch('アクティビティ')">アクティビティ</span><span class="pill" onclick="setSearch('カフェ')">カフェ</span><span class="pill" onclick="setSearch('道の駅')">道の駅</span>
-</div><br><button class="btn primary" onclick="searchPlaces()">🔎 検索</button></div>
-<div class="card" id="results"></div>
-<div class="card"><div class="hero">⭐ 行きたい</div><div id="saved"></div></div>
+<section id="memoryView" class="hidden">
+
+  <div class="card">
+
+    <h2>思い出</h2>
+
+    <textarea
+
+      id="memoryInput"
+
+      placeholder="印象に残ったこと、感想"
+
+    ></textarea>
+
+    <div class="actions">
+
+      <button id="addMemoryBtn">
+
+        保存
+
+      </button>
+
+    </div>
+
+    <div id="memoryList"></div>
+
+  </div>
+
 </section>
 
-<section id="memory" class="page">
-<div class="card"><div class="hero">📸 思い出</div><input id="media" type="file" accept="image/*,video/*" multiple><p class="small">選択した写真・動画はこの端末のブラウザ内に記録します。</p></div>
-<div class="card"><div class="hero">📍 訪問記録</div><button class="btn primary" onclick="visit()">現在地を記録</button><div id="visits"></div></div>
-<div class="card"><div class="hero">🎬 ショート動画</div><p class="small">Web版では写真を選択して簡易スライドショー素材として整理できます。</p><button class="btn" onclick="alert('写真を選択してから、旅行アルバムとして整理できます。')">🎬 旅動画を準備</button></div>
-</section>
-</div>
+</main>
 
 <nav>
-<button class="active" onclick="show('home',this)">🏠<br>ホーム</button>
-<button onclick="show('trip',this)">🗓️<br>旅行</button>
-<button onclick="show('packing',this)">🧳<br>荷物</button>
-<button onclick="show('discover',this)">🔎<br>発見</button>
-<button onclick="show('memory',this)">📸<br>思い出</button>
+
+<button data-view="homeView" class="active">
+
+  <span>⌂</span>
+
+  ホーム
+
+</button>
+
+<button data-view="tripView">
+
+  <span>✈</span>
+
+  旅行
+
+</button>
+
+<button data-view="packView">
+
+  <span>▣</span>
+
+  荷物
+
+</button>
+
+<button data-view="discoverView">
+
+  <span>✧</span>
+
+  発見
+
+</button>
+
+<button data-view="memoryView">
+
+  <span>★</span>
+
+  思い出
+
+</button>
+
 </nav>
 
+<div
+
+  id="modal"
+
+  class="modal hidden"
+
+  aria-hidden="true"
+
+>
+
+<div class="modalBox">
+
+<h2 id="modalTitle">
+
+  新規旅行
+
+</h2>
+
+<label>旅行名</label>
+
+<input
+
+  id="modalTripName"
+
+  placeholder="旅行名"
+
+>
+
+<div class="row">
+
+<div>
+
+<label>開始日</label>
+
+<input id="modalStart" type="date">
+
+</div>
+
+<div>
+
+<label>終了日</label>
+
+<input id="modalEnd" type="date">
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<button id="createTripBtn">
+
+  作成
+
+</button>
+
+<button
+
+  id="closeModalBtn"
+
+  class="secondary"
+
+>
+
+  閉じる
+
+</button>
+
+</div>
+
+<div
+
+  id="historyList"
+
+  class="hidden"
+
+></div>
+
+</div>
+
+</div>
+
 <script>
-const K='tabiLogV2';
-let db=JSON.parse(localStorage.getItem(K)||'{"trips":[],"currentId":null,"pack":[],"saved":[],"schedule":[],"visits":[]}');
-let currentId=db.currentId||null;
-const save=()=>localStorage.setItem(K,JSON.stringify(db));
-const currentTrip=()=>db.trips.find(x=>x.id===currentId);
 
-function show(id,b){
-document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-if(b){document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
-render();
+(function(){
+
+'use strict';
+
+const STORAGE_KEY = 'tabi-log-v21';
+
+const defaults = {
+
+  trips: [],
+
+  activeTripId: null,
+
+  pack: [],
+
+  discoveries: [],
+
+  memories: []
+
+};
+
+function load(){
+
+  try{
+
+    const raw =
+
+      localStorage.getItem(STORAGE_KEY);
+
+    if(!raw){
+
+      return JSON.parse(
+
+        JSON.stringify(defaults)
+
+      );
+
+    }
+
+    const parsed = JSON.parse(raw);
+
+    return {
+
+      trips:
+
+        Array.isArray(parsed.trips)
+
+          ? parsed.trips : [],
+
+      activeTripId:
+
+        parsed.activeTripId || null,
+
+      pack:
+
+        Array.isArray(parsed.pack)
+
+          ? parsed.pack : [],
+
+      discoveries:
+
+        Array.isArray(parsed.discoveries)
+
+          ? parsed.discoveries : [],
+
+      memories:
+
+        Array.isArray(parsed.memories)
+
+          ? parsed.memories : []
+
+    };
+
+  }catch(e){
+
+    return JSON.parse(
+
+      JSON.stringify(defaults)
+
+    );
+
+  }
+
 }
-function goHome(){show('home',document.querySelectorAll('nav button')[0])}
-function newTrip(){
-currentId=null;
-document.getElementById('name').value='';document.getElementById('dest').value='';document.getElementById('start').value='';document.getElementById('end').value='';document.getElementById('lodging').value='';document.getElementById('nap').value='';document.getElementById('memo').value='';
-db.schedule=[];show('trip',document.querySelectorAll('nav button')[1]);
+
+let db = load();
+
+function save(){
+
+  localStorage.setItem(
+
+    STORAGE_KEY,
+
+    JSON.stringify(db)
+
+  );
+
+  render();
+
 }
-function saveTrip(){
-const t={id:currentId||Date.now().toString(),name:name.value.trim()||'名称未設定の旅行',destination:dest.value.trim(),start:start.value,end:end.value,lodging:lodging.value.trim(),nap:nap.value.trim(),memo:memo.value.trim()};
-const old=db.trips.findIndex(x=>x.id===t.id);
-if(old>=0)db.trips[old]=t;else db.trips.unshift(t);
-currentId=t.id;db.currentId=currentId;save();render();alert('旅行を保存しました');
+function esc(s){
+
+  return String(s ?? '').replace(
+
+    /[&<>"']/g,
+
+    c => ({
+
+      '&':'&amp;',
+
+      '<':'&lt;',
+
+      '>':'&gt;',
+
+      '"':'&quot;',
+
+      "'":'&#39;'
+
+    }[c])
+
+  );
+
 }
-function openTrip(id){
-const t=db.trips.find(x=>x.id===id);if(!t)return;
-currentId=id;db.currentId=id;save();
-document.getElementById('name').value=t.name||'';document.getElementById('dest').value=t.destination||'';document.getElementById('start').value=t.start||'';document.getElementById('end').value=t.end||'';document.getElementById('lodging').value=t.lodging||'';document.getElementById('nap').value=t.nap||'';document.getElementById('memo').value=t.memo||'';
-show('trip',document.querySelectorAll('nav button')[1]);
+
+function activeTrip(){
+
+  return db.trips.find(
+
+    t => t.id === db.activeTripId
+
+  ) || null;
+
 }
-function deleteTrip(id){
-if(!confirm('この旅行を履歴から削除しますか？'))return;
-db.trips=db.trips.filter(x=>x.id!==id);if(currentId===id){currentId=null;db.currentId=null}save();render();
+
+function showView(id){
+
+  [
+
+    'homeView',
+
+    'tripView',
+
+    'packView',
+
+    'discoverView',
+
+    'memoryView'
+
+  ].forEach(v => {
+
+    document
+
+      .getElementById(v)
+
+      .classList
+
+      .toggle('hidden', v !== id);
+
+  });
+
+  document
+
+    .querySelectorAll('nav button')
+
+    .forEach(b => {
+
+      b.classList.toggle(
+
+        'active',
+
+        b.dataset.view === id
+
+      );
+
+    });
+
+  render();
+
 }
-function showHistory(){show('history');}
+
 function render(){
-const t=currentTrip();
-document.getElementById('homeSummary').innerHTML=t?
-`<div class="hero">📌 ${t.name}</div><div class="small">${t.destination||''}　${t.start||''} ～ ${t.end||''}</div><br><button class="btn primary" onclick="openTrip('${t.id}')">この旅行を開く</button>`
-:'<div class="hero">まだ旅行が登録されていません</div><div class="small">「新規旅行」から旅行を登録してください。</div>';
-const n=document.getElementById('historyList');
-n.innerHTML=db.trips.length?db.trips.map(x=>`<div class="result history-item"><b onclick="openTrip('${x.id}')">${x.name}</b><span class="small">${x.destination||''}　${x.start||''} ～ ${x.end||''}</span><br><button class="btn" onclick="openTrip('${x.id}')">詳細</button> <button class="btn danger" onclick="deleteTrip('${x.id}')">削除</button></div>`).join(''):'<div class="empty">まだ旅行履歴がありません。</div>';
-if(t){document.getElementById('name').value=t.name||'';document.getElementById('dest').value=t.destination||'';document.getElementById('start').value=t.start||'';document.getElementById('end').value=t.end||'';document.getElementById('lodging').value=t.lodging||'';document.getElementById('nap').value=t.nap||'';document.getElementById('memo').value=t.memo||''}
-let done=db.pack.filter(x=>x.done).length,p=db.pack.length?Math.round(done/db.pack.length*100):0;
-document.getElementById('packProgress').value=p;document.getElementById('packText').textContent=`${done} / ${db.pack.length} 完了（${p}%）`;
-document.getElementById('packList').innerHTML=db.pack.length?db.pack.map((x,i)=>`<li class="pack-item"><input type="checkbox" ${x.done?'checked':''} onchange="togglePack(${i})"><span class="pack-name">${x.name}<br><span class="category">${x.category||'基本'}</span></span><button class="btn danger" onclick="deletePack(${i})">削除</button></li>`).join(''):'<div class="empty">持ち物がありません。「＋追加」から登録してください。</div>';
-document.getElementById('schedule').innerHTML=db.schedule.map(x=>`<div class="result"><b>${x.title}</b><span class="small">${x.date||''} ${x.place||''}</span></div>`).join('')||'<span class="small">まだ予定がありません。</span>';
-document.getElementById('saved').innerHTML=db.saved.map((x,i)=>`<div class="result"><b>${x.name}</b><span class="tag">${x.category||''}</span><br><button class="btn" onclick="addSaved(${i})">＋旅程へ</button></div>`).join('')||'<span class="small">まだありません。</span>';
-document.getElementById('visits').innerHTML=db.visits.map(x=>`<div class="result"><b>${x.name}</b><span class="small">${x.time}</span></div>`).join('')||'<span class="small">まだ記録がありません。</span>';
-}
-function addPack(){
-const input=document.getElementById('packNew'),n=input.value.trim();if(!n)return;
-if(db.pack.some(x=>x.name===n)){alert('同じ持ち物がすでにあります');return}
-db.pack.push({name:n,category:document.getElementById('packCategory').value,done:false});input.value='';save();render();
-}
-function deletePack(i){db.pack.splice(i,1);save();render()}
-function togglePack(i){db.pack[i].done=!db.pack[i].done;save();render()}
-function clearPack(){if(!db.pack.length)return;if(confirm('持ち物をすべて削除しますか？')){db.pack=[];save();render()}}
-function campSet(){
-['テント','寝袋','マット','ランタン','焚き火用品','チェア','クーラーボックス','着替え','タオル','雨具','虫よけ','充電器','モバイルバッテリー'].forEach(n=>{if(!db.pack.some(x=>x.name===n))db.pack.push({name:n,category:'キャンプ',done:false})});
-save();render();
-}
-function addSchedule(){let title=prompt('予定名');if(!title)return;let date=prompt('日時（例：8/15 12:00）')||'';let place=prompt('場所')||'';db.schedule.push({title,date,place});save();render()}
-function addSaved(i){let x=db.saved[i];db.schedule.push({title:x.name,date:'',place:x.name});save();render();alert('旅程に追加しました')}
-function setSearch(x){document.getElementById('search').value=x}
-function quickSearch(x){document.getElementById('search').value=x;show('discover',document.querySelectorAll('nav button')[3]);searchPlaces()}
-function searchPlaces(){let q=document.getElementById('search').value||'観光',d=currentTrip()?.destination||'';let url='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' '+d);document.getElementById('results').innerHTML=`<div class="hero">📍 ${q}</div><p class="small">「${d||'旅先'}」周辺を地図で検索します。</p><a class="btn primary" style="display:inline-block;text-decoration:none" target="_blank" href="${url}">地図で見る</a>`}
-function visit(){if(!navigator.geolocation){alert('位置情報に対応していません');return}navigator.geolocation.getCurrentPosition(p=>{db.visits.unshift({name:currentTrip()?.destination||'現在地',time:new Date().toLocaleString('ja-JP'),lat:p.coords.latitude,lon:p.coords.longitude});save();render()},()=>alert('位置情報を許可してください'))}
-async function weather(){if(!navigator.geolocation){alert('位置情報に対応していません');return}navigator.geolocation.getCurrentPosition(async p=>{try{let u=`https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,weather_code&timezone=auto`;let j=await (await fetch(u)).json();document.getElementById('weather').textContent=`現在 ${j.current.temperature_2m}℃　天気コード ${j.current.weather_code}`}catch(e){document.getElementById('weather').textContent='天気を取得できませんでした'}},()=>alert('位置情報を許可してください')}
 
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
+  const trip = activeTrip();
+
+  const current =
+
+    document.getElementById('currentTrip');
+
+  current.innerHTML = trip
+
+    ? `<strong>${esc(
+
+        trip.name || '名称未設定'
+
+      )}</strong>
+
+      <div class="small">
+
+        ${esc(trip.start || '')}
+
+        ${trip.end
+
+          ? ' ～ ' + esc(trip.end)
+
+          : ''}
+
+      </div>
+
+      <div class="small">
+
+        ${esc(trip.memo || '')}
+
+      </div>`
+
+    : `<div class="empty">
+
+        現在の旅行はありません。
+
+      </div>`;
+
+  document.getElementById(
+
+    'tripName'
+
+  ).value = trip?.name || '';
+
+  document.getElementById(
+
+    'startDate'
+
+  ).value = trip?.start || '';
+
+  document.getElementById(
+
+    'endDate'
+
+  ).value = trip?.end || '';
+
+  document.getElementById(
+
+    'tripMemo'
+
+  ).value = trip?.memo || '';
+
+  document.getElementById(
+
+    'packList'
+
+  ).innerHTML = db.pack.length
+
+    ? db.pack.map(
+
+        (x,i) => `
+
+        <div class="item">
+
+        <label>
+
+        <input
+
+          type="checkbox"
+
+          data-pack-check="${i}"
+
+          ${x.done ? 'checked' : ''}
+
+        >
+
+        ${esc(x.text)}
+
+        </label>
+
+        <button
+
+          class="secondary"
+
+          data-pack-del="${i}"
+
+        >
+
+        削除
+
+        </button>
+
+        </div>`
+
+      ).join('')
+
+    : `<div class="empty">
+
+        荷物はまだありません。
+
+      </div>`;
+
+  document.getElementById(
+
+    'discoverList'
+
+  ).innerHTML =
+
+    db.discoveries.length
+
+    ? db.discoveries.map(
+
+        (x,i) => `
+
+        <div class="item">
+
+        ${esc(x)}
+
+        <button
+
+          class="secondary"
+
+          data-discover-del="${i}"
+
+        >
+
+        削除
+
+        </button>
+
+        </div>`
+
+      ).join('')
+
+    : `<div class="empty">
+
+        発見はまだありません。
+
+      </div>`;
+
+  document.getElementById(
+
+    'memoryList'
+
+  ).innerHTML =
+
+    db.memories.length
+
+    ? db.memories.map(
+
+        (x,i) => `
+
+        <div class="item">
+
+        ${esc(x)}
+
+        <button
+
+          class="secondary"
+
+          data-memory-del="${i}"
+
+        >
+
+        削除
+
+        </button>
+
+        </div>`
+
+      ).join('')
+
+    : `<div class="empty">
+
+        思い出はまだありません。
+
+      </div>`;
+
+  bindDynamic();
+
+}
+
+function bindDynamic(){
+
+  document
+
+    .querySelectorAll(
+
+      '[data-pack-check]'
+
+    )
+
+    .forEach(el => {
+
+      el.onchange = () => {
+
+        const i =
+
+          Number(el.dataset.packCheck);
+
+        if(db.pack[i]){
+
+          db.pack[i].done =
+
+            el.checked;
+
+          save();
+
+        }
+
+      };
+
+    });
+
+  document
+
+    .querySelectorAll(
+
+      '[data-pack-del]'
+
+    )
+
+    .forEach(el => {
+
+      el.onclick = () => {
+
+        db.pack.splice(
+
+          Number(el.dataset.packDel),
+
+          1
+
+        );
+
+        save();
+
+      };
+
+    });
+
+  document
+
+    .querySelectorAll(
+
+      '[data-discover-del]'
+
+    )
+
+    .forEach(el => {
+
+      el.onclick = () => {
+
+        db.discoveries.splice(
+
+          Number(
+
+            el.dataset.discoverDel
+
+          ),
+
+          1
+
+        );
+
+        save();
+
+      };
+
+    });
+
+  document
+
+    .querySelectorAll(
+
+      '[data-memory-del]'
+
+    )
+
+    .forEach(el => {
+
+      el.onclick = () => {
+
+        db.memories.splice(
+
+          Number(
+
+            el.dataset.memoryDel
+
+          ),
+
+          1
+
+        );
+
+        save();
+
+      };
+
+    });
+
+}
+
+function openNewTrip(){
+
+  document.getElementById(
+
+    'modalTitle'
+
+  ).textContent = '新規旅行';
+
+  document.getElementById(
+
+    'historyList'
+
+  ).classList.add('hidden');
+
+  document.getElementById(
+
+    'modalTripName'
+
+  ).classList.remove('hidden');
+
+  document.getElementById(
+
+    'modalStart'
+
+  ).parentElement.parentElement
+
+   .classList.remove('hidden');
+
+  document.getElementById(
+
+    'createTripBtn'
+
+  ).classList.remove('hidden');
+
+  document.getElementById(
+
+    'modalTripName'
+
+  ).value = '';
+
+  document.getElementById(
+
+    'modalStart'
+
+  ).value = '';
+
+  document.getElementById(
+
+    'modalEnd'
+
+  ).value = '';
+
+  document.getElementById(
+
+    'modal'
+
+  ).classList.remove('hidden');
+
+}
+
+function openHistory(){
+
+  document.getElementById(
+
+    'modalTitle'
+
+  ).textContent = '旅行履歴';
+
+  document.getElementById(
+
+    'historyList'
+
+  ).classList.remove('hidden');
+
+  document.getElementById(
+
+    'modalTripName'
+
+  ).classList.add('hidden');
+
+  document.getElementById(
+
+    'modalStart'
+
+  ).parentElement.parentElement
+
+   .classList.add('hidden');
+
+  document.getElementById(
+
+    'createTripBtn'
+
+  ).classList.add('hidden');
+
+  document.getElementById(
+
+    'historyList'
+
+  ).innerHTML = db.trips.length
+
+    ? db.trips.map(
+
+        t => `
+
+        <div class="item">
+
+        <button
+
+          class="secondary"
+
+          data-trip-open="${esc(t.id)}"
+
+        >
+
+          ${esc(
+
+            t.name || '名称未設定'
+
+          )}
+
+        </button>
+
+        <div class="small">
+
+          ${esc(t.start || '')}
+
+          ${t.end
+
+            ? ' ～ ' + esc(t.end)
+
+            : ''}
+
+        </div>
+
+        </div>`
+
+      ).join('')
+
+    : `<div class="empty">
+
+        旅行履歴はありません。
+
+      </div>`;
+
+  document.getElementById(
+
+    'modal'
+
+  ).classList.remove('hidden');
+
+  document
+
+    .querySelectorAll(
+
+      '[data-trip-open]'
+
+    )
+
+    .forEach(b => {
+
+      b.onclick = () => {
+
+        db.activeTripId =
+
+          b.dataset.tripOpen;
+
+        save();
+
+        closeModal();
+
+        showView('tripView');
+
+      };
+
+    });
+
+}
+
+function closeModal(){
+
+  document.getElementById(
+
+    'modal'
+
+  ).classList.add('hidden');
+
+}
+
+document.getElementById(
+
+  'newTripBtn'
+
+).onclick = openNewTrip;
+
+document.getElementById(
+
+  'historyBtn'
+
+).onclick = openHistory;
+
+document.getElementById(
+
+  'closeModalBtn'
+
+).onclick = closeModal;
+
+document.getElementById(
+
+  'createTripBtn'
+
+).onclick = () => {
+
+  const id = String(Date.now());
+
+  const trip = {
+
+    id,
+
+    name:
+
+      document.getElementById(
+
+        'modalTripName'
+
+      ).value.trim()
+
+      || '新しい旅行',
+
+    start:
+
+      document.getElementById(
+
+        'modalStart'
+
+      ).value,
+
+    end:
+
+      document.getElementById(
+
+        'modalEnd'
+
+      ).value,
+
+    memo:''
+
+  };
+
+  db.trips.unshift(trip);
+
+  db.activeTripId = id;
+
+  save();
+
+  closeModal();
+
+  showView('tripView');
+
+};
+
+document.getElementById(
+
+  'saveTripBtn'
+
+).onclick = () => {
+
+  let trip = activeTrip();
+
+  if(!trip){
+
+    const id =
+
+      String(Date.now());
+
+    trip = {
+
+      id,
+
+      name:'新しい旅行',
+
+      start:'',
+
+      end:'',
+
+      memo:''
+
+    };
+
+    db.trips.unshift(trip);
+
+    db.activeTripId = id;
+
+  }
+
+  trip.name =
+
+    document.getElementById(
+
+      'tripName'
+
+    ).value.trim()
+
+    || '名称未設定';
+
+  trip.start =
+
+    document.getElementById(
+
+      'startDate'
+
+    ).value;
+
+  trip.end =
+
+    document.getElementById(
+
+      'endDate'
+
+    ).value;
+
+  trip.memo =
+
+    document.getElementById(
+
+      'tripMemo'
+
+    ).value.trim();
+
+  save();
+
+};
+
+document.getElementById(
+
+  'addPackBtn'
+
+).onclick = () => {
+
+  const el =
+
+    document.getElementById(
+
+      'packInput'
+
+    );
+
+  const text =
+
+    el.value.trim();
+
+  if(!text) return;
+
+  db.pack.push({
+
+    text,
+
+    done:false
+
+  });
+
+  el.value = '';
+
+  save();
+
+};
+
+document.getElementById(
+
+  'addDiscoverBtn'
+
+).onclick = () => {
+
+  const el =
+
+    document.getElementById(
+
+      'discoverInput'
+
+    );
+
+  const text =
+
+    el.value.trim();
+
+  if(!text) return;
+
+  db.discoveries.unshift(text);
+
+  el.value = '';
+
+  save();
+
+};
+
+document.getElementById(
+
+  'addMemoryBtn'
+
+).onclick = () => {
+
+  const el =
+
+    document.getElementById(
+
+      'memoryInput'
+
+    );
+
+  const text =
+
+    el.value.trim();
+
+  if(!text) return;
+
+  db.memories.unshift(text);
+
+  el.value = '';
+
+  save();
+
+};
+
+document
+
+  .querySelectorAll('nav button')
+
+  .forEach(b => {
+
+    b.onclick = () =>
+
+      showView(b.dataset.view);
+
+  });
+
 render();
+
+})();
+
 </script>
+
 </body>
+
 </html>
