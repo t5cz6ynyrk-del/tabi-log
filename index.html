@@ -676,7 +676,7 @@ nav button.active{
 
   <h1>🏕️ 旅ログ</h1>
 
-  <div class="sub">旅の前から、旅の後まで。 v2.3</div>
+  <div class="sub">旅の前から、旅の後まで。 v2.4</div>
 
 </header>
 
@@ -739,6 +739,12 @@ nav button.active{
     <button class="btn primary" id="weatherBtn">
 
       天気を取得
+
+    </button>
+
+    <button class="btn" id="yahooWeatherBtn">
+
+      🌦 Yahoo!天気を開く
 
     </button>
 
@@ -906,6 +912,40 @@ nav button.active{
 
   </div>
 
+</section>
+
+<section id="meals" class="page">
+
+  <div class="card">
+    <div class="hero">🍴 食事</div>
+    <div class="small">自炊と外食を予定として管理できます。自炊の食材は買い物チェックにも使えます。</div>
+    <label class="small">日付</label><input id="mealDate" type="date">
+    <div class="grid">
+      <div><label class="small">食事</label><select id="mealSlot"><option>朝</option><option>昼</option><option>夜</option><option>その他</option></select></div>
+      <div><label class="small">種類</label><select id="mealMode"><option value="cook">自炊</option><option value="out">外食</option></select></div>
+    </div>
+    <input id="mealTitle" placeholder="料理名・店名（例：焼きそば、○○食堂）">
+    <input id="mealTime" type="time">
+    <input id="mealPlace" placeholder="場所・店の住所など">
+    <textarea id="mealIngredients" placeholder="自炊の食材を1行ずつ入力
+例：
+豚肉
+キャベツ
+焼きそば麺"></textarea>
+    <textarea id="mealMemo" placeholder="予約、営業時間、調理メモなど"></textarea>
+    <button class="btn primary" id="addMealBtn">＋ 食事予定を追加</button>
+  </div>
+
+  <div class="card">
+    <div class="hero">🗓️ 食事予定</div>
+    <div id="mealList"></div>
+  </div>
+
+  <div class="card">
+    <div class="hero">🛒 買い物リスト</div>
+    <div class="small">自炊に登録した食材をまとめて表示します。買ったらチェックしてください。</div>
+    <div id="groceryList" style="margin-top:8px"></div>
+  </div>
 </section>
 
 <section id="discover" class="page">
@@ -1104,7 +1144,9 @@ nav button.active{
 
     <input id="bgmFile"
 
-      type="file">
+      type="file"
+
+      accept="audio/*">
 
     <label class="small">
 
@@ -1179,6 +1221,12 @@ nav button.active{
   <button data-page="packing">
 
     🧳<br>荷物
+
+  </button>
+
+  <button data-page="meals">
+
+    🍴<br>食事
 
   </button>
 
@@ -1277,7 +1325,9 @@ function loadDB(){
 
         schedule:[],
 
-        visits:[]
+        visits:[],
+
+        meals:[]
 
       };
 
@@ -1295,7 +1345,9 @@ function loadDB(){
 
       schedule:Array.isArray(p.schedule)?p.schedule:[],
 
-      visits:Array.isArray(p.visits)?p.visits:[]
+      visits:Array.isArray(p.visits)?p.visits:[],
+
+      meals:Array.isArray(p.meals)?p.meals:[]
 
     };
 
@@ -1313,7 +1365,9 @@ function loadDB(){
 
       schedule:[],
 
-      visits:[]
+      visits:[],
+
+      meals:[]
 
     };
 
@@ -1613,6 +1667,57 @@ function showHistory(){
 
   );
 
+}
+
+function addMeal(){
+  const trip=currentTrip();
+  if(!trip){alert('先に旅行を登録してください');return;}
+  const title=$('mealTitle').value.trim();
+  if(!title){alert('料理名または店名を入力してください');return;}
+  const ingredients=$('mealIngredients').value.split('\n').map(x=>x.trim()).filter(Boolean).map(name=>({name,done:false}));
+  db.meals.push({
+    id:Date.now().toString(),tripId:trip.id,date:$('mealDate').value,slot:$('mealSlot').value,mode:$('mealMode').value,
+    title,time:$('mealTime').value,place:$('mealPlace').value.trim(),memo:$('mealMemo').value.trim(),ingredients
+  });
+  ['mealTitle','mealTime','mealPlace','mealIngredients','mealMemo'].forEach(id=>$(id).value='');
+  save();render();
+}
+
+function deleteMeal(id){
+  db.meals=db.meals.filter(x=>x.id!==id);save();render();
+}
+
+function toggleIngredient(mealId,index){
+  const m=db.meals.find(x=>x.id===mealId);
+  if(!m||!m.ingredients[index])return;
+  m.ingredients[index].done=!m.ingredients[index].done;save();render();
+}
+
+function renderMeals(){
+  const t=currentTrip();
+  const meals=t?db.meals.filter(x=>x.tripId===t.id):[];
+  const list=$('mealList'), groceries=$('groceryList');
+  if(!list||!groceries)return;
+  list.innerHTML=meals.length?meals.map(m=>`
+    <div class="result">
+      <div class="row"><b>${escapeHtml(m.date||'日付未設定')} ${escapeHtml(m.slot)}｜${m.mode==='cook'?'🍳 自炊':'🍽️ 外食'}</b><button class="btn danger" data-delete-meal="${m.id}">削除</button></div>
+      <div><b>${escapeHtml(m.title)}</b>${m.time?` <span class="pill">${escapeHtml(m.time)}</span>`:''}</div>
+      ${m.place?`<div class="small">📍 ${escapeHtml(m.place)}</div>`:''}
+      ${m.memo?`<div class="small">📝 ${escapeHtml(m.memo)}</div>`:''}
+      ${m.mode==='cook'&&m.ingredients.length?`<div style="margin-top:8px">${m.ingredients.map((g,i)=>`<label class="pack-item"><input type="checkbox" data-grocery="${m.id}:${i}" ${g.done?'checked':''}><span class="pack-name">${escapeHtml(g.name)}</span></label>`).join('')}</div>`:''}
+    </div>`).join(''):'<div class="empty">食事予定はまだありません。</div>';
+  const gs=[];
+  meals.filter(m=>m.mode==='cook').forEach(m=>m.ingredients.forEach((g,i)=>gs.push({m,i,g,title:m.title,date:m.date})));
+  groceries.innerHTML=gs.length?gs.map(x=>`<label class="pack-item"><input type="checkbox" data-grocery="${x.m.id}:${x.i}" ${x.g.done?'checked':''}><span class="pack-name">${escapeHtml(x.g.name)} <span class="small">（${escapeHtml(x.date||'')} ${escapeHtml(x.title)}）</span></span></label>`).join(''):'<div class="empty">自炊の食材を登録するとここに表示されます。</div>';
+  document.querySelectorAll('[data-delete-meal]').forEach(el=>el.onclick=()=>deleteMeal(el.dataset.deleteMeal));
+  document.querySelectorAll('[data-grocery]').forEach(el=>el.onchange=()=>{const [id,i]=el.dataset.grocery.split(':');toggleIngredient(id,Number(i));});
+}
+
+function openYahooWeather(){
+  const t=currentTrip();
+  const q=(t&&t.destination)?t.destination:'';
+  const url=q?'https://search.yahoo.co.jp/search?p='+encodeURIComponent(q+' Yahoo!天気'):'https://weather.yahoo.co.jp/';
+  window.open(url,'_blank','noopener');
 }
 
 function addPack(){
@@ -2413,28 +2518,6 @@ function clearMedia(){
 
 function setBgm(file){
 
-  if(file){
-
-    const name=(file.name||'').toLowerCase();
-
-    const type=(file.type||'').toLowerCase();
-
-    const allowedExt=/\.(m4a|mp3|wav|aac|mp4|caf|aif|aiff)$/i.test(name);
-
-    const allowedType=type.startsWith('audio/')||type==='video/mp4';
-
-    if(!allowedExt&&!allowedType){
-
-      alert('BGMには音声ファイル（M4A・MP3・WAVなど）を選択してください');
-
-      $('bgmFile').value='';
-
-      return;
-
-    }
-
-  }
-
   if(bgmUrl){
 
     URL.revokeObjectURL(
@@ -2760,6 +2843,8 @@ function render(){
   const t=
 
     currentTrip();
+
+  renderMeals();
 
   $('homeSummary')
 
@@ -3391,6 +3476,12 @@ $('addPackBtn')
 
   addPack;
 
+$('addMealBtn')
+
+  .onclick=
+
+  addMeal;
+
 $('restorePackBtn')
 
   .onclick=
@@ -3420,6 +3511,12 @@ $('weatherBtn')
   .onclick=
 
   weather;
+
+$('yahooWeatherBtn')
+
+  .onclick=
+
+  openYahooWeather;
 
 $('media')
 
