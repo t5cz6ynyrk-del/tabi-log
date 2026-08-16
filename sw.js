@@ -1,5 +1,4 @@
-const CACHE = 'tabi-log-v3
-  ';
+const CACHE = 'tabi-log-v4';
 
 const ASSETS = ['./', './index.html', './manifest.webmanifest'];
 
@@ -23,7 +22,11 @@ self.addEventListener('activate', event => {
 
       Promise.all(
 
-        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+        keys
+
+          .filter(key => key !== CACHE)
+
+          .map(key => caches.delete(key))
 
       )
 
@@ -41,29 +44,27 @@ self.addEventListener('fetch', event => {
 
   event.respondWith(
 
-    caches.match(event.request)
+    fetch(event.request)
 
-      .then(cached =>
+      .then(response => {
 
-        cached ||
+        const copy = response.clone();
 
-        fetch(event.request)
+        caches.open(CACHE)
 
-          .then(response => {
+          .then(cache => cache.put(event.request, copy))
 
-            const copy = response.clone();
+          .catch(() => {});
 
-            caches.open(CACHE)
+        return response;
 
-              .then(cache => cache.put(event.request, copy))
+      })
 
-              .catch(() => {});
+      .catch(() =>
 
-            return response;
+        caches.match(event.request)
 
-          })
-
-          .catch(() => caches.match('./index.html'))
+          .then(cached => cached || caches.match('./index.html'))
 
       )
 
